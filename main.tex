@@ -1,0 +1,117 @@
+\documentclass[12pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\setlist[itemize]{label=\textbullet, topsep=0cm}
+\setlist[description]{topsep=0cm}
+% \setlist[description]{leftmargin=30pt,labelindent=\parindent}
+\usepackage{mathpazo}
+% \usepackage{fullpage}
+\usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
+% \usepackage{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{parskip}
+% \parskip=12pt 
+% \parindent=0pt
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+% \fancyhead[RO,LE]{Thesis Title}
+% \fancyhead[L]{\rightmark}
+\fancyhead[C]{\leftmark}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+% \fancyfoot[LO,CE]{Chapitre \thechapter}
+% we can use \leftmark and \rightmark to add chapter title and section title to header or footer with \fancyhead or \fancyfoot.
+% \fancyfoot[CO,RE]{Author Name}
+\renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage[defaultlines=4,all]{nowidow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{verbatim}
+\usepackage{booktabs}
+
+% \title{
+%     {Thesis Title}\\
+%     {\large Institution Name}\\
+%     {\includegraphics[scale=1]{images/USTHB_Logo.png}}
+% }
+% \author{Malaoui Sidahmed \and Salim Bitam}
+% \date{\today}
+
+\begin{document}
+
+\input{chapters/preambules}
+
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter*{Introduction}
+\pagenumbering{arabic} %Pour réutiliser la numérotation des pages.
+\input{chapters/introduction}
+%Here is how to add figures. ===========================================================================================
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[scale=1]{images/msf_example.jpg}
+%     \caption{Figure example}
+%     \label{Figure example}
+% \end{figure}
+
+%Here is how to add subfigures. ========================================================================================
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{images/example01}
+%         \caption{$y=x$}
+%         \label{fig:y equals x}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{images/example02}
+%         \caption{$y=3sinx$}
+%         \label{fig:three sin x}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{images/example03}
+%         \caption{$y=5/x$}
+%         \label{fig:five over x}
+%     \end{subfigure}
+%     \caption{Three simple graphs}
+%     \label{fig:three graphs}
+% \end{figure}
+
+% Document begin =======================================================================================================
+\chapter{Introduction à la sécurité informatique et aux Malwares}
+\input{chapters/chapter02}
+
+\chapter{Méthodes d'infenctions et de contournements des anti-virus}
+% \chapter{Les virus}
+\input{chapters/chapter03}
+
+\chapter[Développement, Injection, Propagation]{Développement du Malware et démonstration de l'injection ainsi que la propagation}
+\input{chapters/chapter04}
+
+\chapter{Conclusions}
+\input{chapters/conclusion}
+
+\appendix
+\chapter{Appendix Title}
+\input{chapters/appendix}
+
+\bibliographystyle{unsrt} %ieetr
+\bibliography{references}
+% \printbibliography
+
+\end{document}
