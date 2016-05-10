@@ -1,7 +1,15 @@
 %!TEX root = ../main.tex
 
-\section{Infection virale}
-    \subsection{Introduction}
+Le deuxième chapitre de ce mémoire parlera sur les différents techniques utilisés par les virus 
+dans le processus d'infection, ainsi que les techniques employées par ces derniers pour dissimuler leurs présences.
+
+Ce chapitre portera aussi sur différentes notions qui ont une relation plus ou moins indirecte avec les virus,
+et qui sont nécessaires pour la réalisation d'une études plus propre et plus claire.
+
+\newpage
+
+% \section{Infection virale}
+    % \subsection{Introduction}
 
 \section{Classification des virus par cible}
 L'un des moyens de classifications des virus est de voir ce qu'ils essayent d'infecter.
@@ -306,6 +314,8 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
     le nombre de ces types de virus est petit par rapport aux autres types.
 
 \section{Les techniques d'infections}
+
+% Petite introduction ici.
         \subsubsection{Recouvrement}
         Un virus par recouvrement se contente d’écraser partiellement ou en totalité le programme 
         qu’il infecte. En conséquence, il le détruit au moins partiellement et rend son utilisation et 
@@ -318,14 +328,6 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         Ces virus ne sont généralement pas résidents en mémoire. Ne réalisant plus la fonction souhaitée, 
         l’utilisateur les détecte rapidement. Les virus agissant par recouvrement ne réussissent jamais 
         à se disséminer largement.
-
-        \subsubsection{Ajout}
-        Un virus par ajout modifie un programme sans le détruire, en altérant son point d’entrée pour 
-        qu’il s'exécute à chaque fois que le programme est lancé, puis lui rend la main.
-
-        La force de cette méthode est que le programme infecté n’est pas modifié, par conséquent la taille 
-        est augmenter de la taille du virus, ce qui rend un repérage fondé sur la variation de 
-        la taille des programmes possible.
 
         \subsubsection{Cavité}
         Connaissant la structure spécifique du type des programmes à contaminer, le virus modifie le point 
@@ -368,6 +370,56 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         En effet, les utilitaires testant l’intégrité d’un disque découvriront des anomalies (fichiers croisés) 
         et se proposeront de les corriger en entraînant des destructions irrémédiables.
 
+        \subsubsection{Ajout}
+        Un virus par ajout modifie un programme sans le détruire, en altérant son point d’entrée pour 
+        qu’il s'exécute à chaque fois que le programme est lancé, puis lui rend la main.
+
+        La force de cette méthode est que le programme infecté n’est pas modifié, par conséquent la taille 
+        est augmenter de la taille du virus, ce qui rend un repérage fondé sur la variation de 
+        la taille des programmes possible.
+
+\section{Structure du format PE}
+Le format de fichier \emph{Portable Executable} \cite{pe1} est un format utilisé par Windows (x86 et x64), 
+pour les fichiers .exe, .cpl\footnote{Les fichie .cpl représentent les items de paneau de configuration.}, 
+.dll\footnote{Les fichiers .dll représentent les bibliothèques dynamiques.}, 
+.sys\footnote{Les fichiers .sys représentent les drivers.}, 
+.scr\footnote{Les fichiers .scr représentent les écrans de veille.} ;
+ce format est une structure de données contenant les 
+informations nécessaires pour que le système d’exploitation puisse charger et gérer le code 
+exécutable.  Le format PE se compose d'en-têtes et de sections, comme le montre la figure suivante :
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/pe_header.jpg}
+    \caption{Structure PE}
+\end{figure}
+
+    \subsubsection{En-tête MZ-DOS}
+% pas sur de la phrase.
+    Tout fichier PE doit commencer par l'en-tête MZ-DOS. Cet en-tête permet au système d'exploitation, au 
+    moment de l'exécution d'un fichier, de reconnaître si c'est un exécutable valide ou non. \cite{pe2}
+
+    \subsubsection{En-tête PE}
+    Cet en-tête contient des champs d'information comme l'offset et la taille des zones de code et de données, 
+    le système d'exploitation dont le fichier est destiné, la taille de la pile initial et 
+    d'autre informations vitale. \cite{pe3}
+
+    Les premiers bytes sont pris par MS-DOS stub qui a le rôle d'afficher un message d'erreur en cas ou 
+    l'exécutable est lancé dans un environnement qui ne supporte pas Win32, les bytes suivant constitue 
+    une structure de données appeler \emph{\textsc{image\_nt\_headers}} dont les champs sont :
+    \begin{description}
+        \item[image\_file\_header :] C'est une structure contenant les informations nécessaires
+            sur le fichier comme le nombre de sections, le processeur dont le fichier est destiné \ldots etc.
+        \item[image\_optional\_header :] C'est une structure contenant les des informations crucial comme l'adresse
+            du point d'entrer.
+    \end{description}
+
+    \subsubsection{Les sections}
+    Tous code, données et ressources sont stockés dans les sections. Une section se compose de deux 
+    parties : une partie en-tête et une autre pour les données. Chaque en-tête est d'une longueur de 40 
+    bytes ; il contient le nom de la section, la taille des données, l'offset de la section dans 
+    le ficher PE, et l'adresse de début de la plage d'adresse du processus courant où la section doit être 
+    chargé. \cite{pe4}
+
 \section{Techniques de contournement des Anti-Virus}
 
 % \section{Introduction}
@@ -377,3 +429,6 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
 % \section{Techniques de contournement des Anti-Virus}
 
 \section{Conclusion}
+À la fin de ce chapitre, des notions plus ou moins poussées concernant les virus --- comme les méthodes d'infections 
+et les méthodes de dissimulation --- ont été abordés et étudiés. Ces notions sont indispensable pour cerner le 
+mode de fonctionnement des virus, ainsi que pour la mise en œuvre du projet et du prochain chapitre.
