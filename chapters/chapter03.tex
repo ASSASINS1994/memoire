@@ -422,35 +422,64 @@ exécutable.  Le format PE se compose d'en-têtes et de sections, comme le montr
 
 \section{Techniques de contournement des Anti-Virus}
     \subsection{Methodes de bases}
-    \begin{description}
-        \item[Methode cryptage/decryptage :] Cette methode est faite en cryptant le corp du virus au préalable, puis le décrypter avec une boucle a son execution, elle permet d'éviter l'analyse statique.
+        \subsubsection{Methode cryptage/decryptage} Cette methode est faite en cryptant le corp du virus au préalable, puis le décrypter avec une boucle a son execution, elle permet d'éviter l'analyse statique.
 
-        \item[Injection de code :] Cette methode consiste ajouter un code externe au code d'un processus legale, ce qui fait qu'a l'execution, le code malveillant sera furtive et aura les memes prévileges que le code original.
+        \subsubsection{Injection de code} Cette methode consiste ajouter un code externe au code d'un processus legale, ce qui fait qu'a l'execution, le code malveillant sera furtive et aura les memes prévileges que le code original.
 
-        \item[Hallowing :] Cette méthode consiste a suspendre un processus en éxécution puis de remplacer son code en memoire central par le code malveillant.
-    \end{description}
+        \subsubsection{Hallowing} Cette méthode consiste a suspendre un processus en éxécution puis de remplacer son code en memoire central par le code malveillant.
 
     \subsection{Méthodes alternatives}
-    \begin{description}
-        \item[L'offre a refuser :] La principale limite avec les scanneurs des anti-virus est la quantité de temps qu'ils peuvent consacrer à chaque fichier . Lors d'une analyse régulière du système , l'anti virus devra analyser des milliers de fichiers alors il ne peut tout simplement pas passer trop de temps ou de puissance sur un fichier particulier ( ceçi pourrait également conduire à une forme de déni de service sur le l'AV ). On a comme exemple :
+        \subsubsection{L'offre a refuser} La principale limite avec les scanneurs des anti-virus est la quantité de temps qu'ils peuvent consacrer à chaque fichier . Lors d'une analyse régulière du système , l'anti virus devra analyser des milliers de fichiers alors il ne peut tout simplement pas passer trop de temps ou de puissance sur un fichier particulier ( ceçi pourrait également conduire à une forme de déni de service sur le l'AV ). On a comme exemple :
         \begin{itemize}
             \item Allocation d'une grande taille d'espace mémoire.
             \item Grand boucle a incrementation.
         \end{itemize}
 
-        \item[Je ne pourrais pas faire cella :] Cette technique ce base sur l'auto consience ce qui veux dire, est ce que le code est lancer dans l'environement de l'anti virus ou non.
+        \subsubsection{Je ne pourrais pas faire cella} Cette technique ce base sur l'auto consience ce qui veux dire, est ce que le code est lancer dans l'environement de l'anti virus ou non.
             Cet environement ne donne pas accées a internet au virus qui est entrain d'etre scanner, alors si ce dernier essaye de telecharger ou d'accéder a une page web, l'environmenet générera une réponse que ce soit un fichier ou une page web,
             donc si le virus essaye d'accéder a une page web inexistante cella sera possible, ce qui n'est pas le cas dans un environement normal.
 
-        \item[Connaitre l'ennemie :] Si le nom d'utilisateur d'une machine est connu, il est possible de demander une action depedante de ce nom là, comme par exemple ecrire et lire dans les fichiers du compte utilisateur, donc si apres création d'un fichier et lecture de ce dernier ce conclu par un succeer cela veux dire que le virus n'est pas dans l'environement de l'AV.
+        \subsubsection{Connaitre l'ennemie} Si le nom d'utilisateur d'une machine est connu, il est possible de demander une action depedante de ce nom là, comme par exemple ecrire et lire dans les fichiers du compte utilisateur, donc si apres création d'un fichier et lecture de ce dernier ce conclu par un succeer cela veux dire que le virus n'est pas dans l'environement de l'AV.
 
-        \item[Verifier l'enivronement :]
+        \subsubsection{Verifier l'enivronement}
         \begin{description}
             \item[Vérifier le nom de l'éxécutable :] Puisque le code est émulé, il ne démarre pas dans un processus qui a le nom du fichier binaire. Il suffit juste de vérifier si le premier argument contient le nom du fichier.
 
             \item[Vérifier la commande sleep :] Nous savons que les anti virus passe les intructions sleep, donc il suffit de verifier si la commande sleep a était bien exécuter ou non.
         \end{description}
-    \end{description}
+
+
+% \section{Techniques de contournement des Anti-Virus}
+%     \subsection{Methodes de bases}
+%     \begin{description}
+%         \item[Methode cryptage/decryptage :] Cette methode est faite en cryptant le corp du virus au préalable, puis le décrypter avec une boucle a son execution, elle permet d'éviter l'analyse statique.
+
+%         \item[Injection de code :] Cette methode consiste ajouter un code externe au code d'un processus legale, ce qui fait qu'a l'execution, le code malveillant sera furtive et aura les memes prévileges que le code original.
+
+%         \item[Hallowing :] Cette méthode consiste a suspendre un processus en éxécution puis de remplacer son code en memoire central par le code malveillant.
+%     \end{description}
+
+%     \subsection{Méthodes alternatives}
+%     \begin{description}
+%         \item[L'offre a refuser :] La principale limite avec les scanneurs des anti-virus est la quantité de temps qu'ils peuvent consacrer à chaque fichier . Lors d'une analyse régulière du système , l'anti virus devra analyser des milliers de fichiers alors il ne peut tout simplement pas passer trop de temps ou de puissance sur un fichier particulier ( ceçi pourrait également conduire à une forme de déni de service sur le l'AV ). On a comme exemple :
+%         \begin{itemize}
+%             \item Allocation d'une grande taille d'espace mémoire.
+%             \item Grand boucle a incrementation.
+%         \end{itemize}
+
+%         \item[Je ne pourrais pas faire cella :] Cette technique ce base sur l'auto consience ce qui veux dire, est ce que le code est lancer dans l'environement de l'anti virus ou non.
+%             Cet environement ne donne pas accées a internet au virus qui est entrain d'etre scanner, alors si ce dernier essaye de telecharger ou d'accéder a une page web, l'environmenet générera une réponse que ce soit un fichier ou une page web,
+%             donc si le virus essaye d'accéder a une page web inexistante cella sera possible, ce qui n'est pas le cas dans un environement normal.
+
+%         \item[Connaitre l'ennemie :] Si le nom d'utilisateur d'une machine est connu, il est possible de demander une action depedante de ce nom là, comme par exemple ecrire et lire dans les fichiers du compte utilisateur, donc si apres création d'un fichier et lecture de ce dernier ce conclu par un succeer cela veux dire que le virus n'est pas dans l'environement de l'AV.
+
+%         \item[Verifier l'enivronement :]
+%         \begin{description}
+%             \item[Vérifier le nom de l'éxécutable :] Puisque le code est émulé, il ne démarre pas dans un processus qui a le nom du fichier binaire. Il suffit juste de vérifier si le premier argument contient le nom du fichier.
+
+%             \item[Vérifier la commande sleep :] Nous savons que les anti virus passe les intructions sleep, donc il suffit de verifier si la commande sleep a était bien exécuter ou non.
+%         \end{description}
+%     \end{description}
 % \section{Introduction}
 % \section{Classification des virus par cible}
 % \section{Classification des virus par techniques de dissimulations}
