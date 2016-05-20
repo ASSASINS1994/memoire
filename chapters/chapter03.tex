@@ -378,7 +378,7 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         est augmenter de la taille du virus, ce qui rend un repérage fondé sur la variation de 
         la taille des programmes possible.
 
-\section{Structure du format PE}
+\section{Structure du format PE} \label{pe_header}
 Le format de fichier \emph{Portable Executable} \cite{pe1} est un format utilisé par Windows (x86 et x64), 
 pour les fichiers .exe, .cpl\footnote{Les fichie .cpl représentent les items de paneau de configuration.}, 
 .dll\footnote{Les fichiers .dll représentent les bibliothèques dynamiques.}, 
@@ -389,8 +389,9 @@ informations nécessaires pour que le système d’exploitation puisse charger e
 exécutable.  Le format PE se compose d'en-têtes et de sections, comme le montre la figure suivante :
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{images/pe_header.jpg}
+    \includegraphics[scale=0.5]{images/pe_header.jpg}
     \caption{Structure PE}
+    \label{structure_pe}
 \end{figure}
 
     \subsubsection{En-tête MZ-DOS}

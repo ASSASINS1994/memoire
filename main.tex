@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Lenny]{fncychap}
 \frenchbsetup{StandardLists=true}
 \usepackage{graphicx}
 \usepackage{enumitem}
@@ -12,12 +14,12 @@
 \usepackage{mathpazo}
 % \usepackage{fullpage}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
-% \usepackage{hyperref}
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
 \usepackage{parskip}
 % \parskip=12pt 
 % \parindent=0pt
 \usepackage{fancyhdr}
+
 \pagestyle{fancy}
 \fancyhead{}
 % \fancyhead[RO,LE]{Thesis Title}
@@ -36,7 +38,12 @@
 \usepackage{subcaption}
 \usepackage{verbatim}
 \usepackage{booktabs}
-
+\usepackage{listings}
+\lstset{
+  columns=fullflexible,
+}
+\usepackage{soul}
+\usepackage{shadow}
 % \title{
 %     {Thesis Title}\\
 %     {\large Institution Name}\\
@@ -93,7 +100,7 @@
 % \end{figure}
 
 % Document begin =======================================================================================================
-\chapter{(Introduction à la sécurité informatique et aux Malwares) ou (La sécurité informatique)}
+\chapter{Introduction à la sécurité informatique et aux Malwares}
 \input{chapters/chapter02}
 
 \chapter{(Méthodes d'infenctions et de contournements des anti-virus) ou (Les virus)}

