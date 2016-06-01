@@ -4,7 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
-\usepackage[Lenny]{fncychap}
+\usepackage[Conny]{fncychap}
 \frenchbsetup{StandardLists=true}
 \usepackage{graphicx}
 \usepackage{enumitem}
@@ -44,6 +44,7 @@
 }
 \usepackage{soul}
 \usepackage{shadow}
+\usepackage{float}
 % \title{
 %     {Thesis Title}\\
 %     {\large Institution Name}\\
@@ -61,8 +62,9 @@
 \listoffigures
 \listoftables
 
-\chapter*{Introduction}
+\chapter*{Introduction Générale}
 \pagenumbering{arabic} %Pour réutiliser la numérotation des pages.
+\addcontentsline{toc}{chapter}{\protect\numberline{}Introduction générale}
 \input{chapters/introduction}
 %Here is how to add figures. ===========================================================================================
 % \begin{figure}[h]
@@ -103,14 +105,15 @@
 \chapter{Introduction à la sécurité informatique et aux Malwares}
 \input{chapters/chapter02}
 
-\chapter{(Méthodes d'infenctions et de contournements des anti-virus) ou (Les virus)}
+\chapter{Les virus et les méthodes d'infections}
 % \chapter{Les virus}
 \input{chapters/chapter03}
 
 \chapter[Développement, Injection, Propagation]{Développement du Malware et démonstration de l'injection ainsi que la propagation}
 \input{chapters/chapter04}
 
-\chapter{Conclusions}
+\chapter*{Conclusion Générale}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Conclusion générale}
 \input{chapters/conclusion}
 
 \appendix

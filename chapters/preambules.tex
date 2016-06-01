@@ -1,5 +1,6 @@
 %!TEX root = ../main.tex
 
+\pagenumbering{gobble} %Utilisé la numérotation romaine des pages.
 \begin{center}
     \normalsize{Ministère de l'Enseignement Supérieur et de la Recherche Scientifique}\\
     \normalsize{Université des Sciences et de la Technologie Houari Boumediene}\\
@@ -34,7 +35,7 @@
     \center
     \begin{tabular}{p{8cm}p{6.5cm}}
     \textbf{Présenté par :} & \textbf{Sujet proposé par :}\\
-    - \textsc{Bitam} Salim  & - \\
+    - \textsc{Bitam} Salim  & - \textsc{Zeraoulia} Khaled \\
     - \textsc{Malaoui} Sidahmed Bilal  & \\
     \end{tabular}
 \end{table}
@@ -44,14 +45,14 @@
 \begin{table}[h]
     \begin{tabular}{p{6.5cm}p{5cm}}
     \textbf{Devant le jury composé de:}&\\
-    - \,\,\, Mr. ******* & Président \\
-    - \,\,\, Mme. ****** & Membre \\
+    - \,\,\, Mr. \textsc{Belkhir} & Président \\
+    - \,\,\, Mme. \textsc{Chenait} & Membre \\
     \end{tabular}
 \end{table}
 
 \vspace{2cm}
 \begin{center}
-Projet N : ***/2016
+Projet N : 217/2016
 \end{center}
 
 \clearpage
@@ -103,26 +104,112 @@ Projet N : ***/2016
 
 \pagenumbering{roman} %Utilisé la numérotation romaine des pages.
 % Pour abstract
-\thispagestyle{plain}
-\begin{center}
-    \Large
-    \textbf{Étude technique et développement de malware}
+% \thispagestyle{plain}
+% \begin{center}
+%     \Large
+%     \textbf{Étude technique et développement de malware}
     
-    \vspace{0.4cm}
-    \large
-    % Thesis Subtitle
+%     \vspace{0.4cm}
+%     \large
+%     % Thesis Subtitle
     
-    \vspace{0.4cm}
-    \textbf{Malaoui Sidahmed Bilal \hspace{3cm} Bitam Salim}
+%     \vspace{0.4cm}
+%     \textbf{Malaoui Sidahmed Bilal \hspace{3cm} Bitam Salim}
     
-    \vspace{0.9cm}
-    \textbf{Abstract}
-\end{center}
-% \chapter*{Abstract}
-% Abstract goes here
+%     \vspace{0.9cm}
+%     \textbf{Abstract}
+% \end{center}
+
+
+
+% changé =============================================================================================================
+
+
+\section*{Résumer} 
+L’information est aujourd’hui devenue la plus grande richesse que toute personne ou entreprise peut posséder, et la sensibilité de ces mêmes informations a fait de la sécurité informatique une priorité majeure des individus et des professionnels.
+
+Mais la naïveté de l’être humain l’a poussé à penser que sécuriser sa machine est amplement suffisant pour être à l’abri des attaques, il oublie cependant que sa machine est très souvent en interaction avec d’autres machines de sécurité moindre.
+
+Dans cette étude, nous tenterons de mieux comprendre le fonctionnement des Virus, leurs méthodes d'infection et de propagation. Au vu de développer un Malware combinant un virus et une porte dérobée puis de tester sa propagation d'une machine de faible sécurité vers une machine sécurisée, et de tester son efficacité contre cette dernière. %vérifié
+
+\section*{Abstract}
+The information has now become the greatest asset that any person or company can own , and the sensitivity of this information has made computer security a major priority for individuals and professionals.
+
+But the naivety of the human being led him to think that securing his own machine is  enough to be safe from attack , however, he forgets that his machine is very often in interaction with other lesser security machines.
+
+In this study, we will try to better understand how the virus works , and their methods to infect and to propagate. In order to develop a Malware, combining a Virus and a Backdoor then test its spread from a low security machine to a secured machine and test its effectiveness against the latter. %vérifié
+
+\paragraph{Mots clés :} Malware, Virus, Backdoor, Infection virale, Propagation.
+
+
+
+
+
 
 \chapter*{Dédicaces}
-Dédicaces ici.
+% tout mon dédicace vérifié.
+Je dédie ce travail à mes parents qui m'ont toujours supporté et qui ont toujours sacrifié pour moi. Tout ce que
+je pourrai faire pour eux n'atteindre même pas le quart de ce qu'ils m'ont donné et de ce qu'ils m'ont fait.
+
+À ma chère famille, surtout mon petit frère et ma sœur.
+
+À mes chers amis, Nassraddine, Lamine, Idris, Rabah, Habib, Walid, Hawas.
+
+J'aimerai aussi et surtout dédié ce modeste travail à mes chers frères et sœurs Palestiniens qui sont opprimés par les
+sionistes, les sionistes qui n'ont pas la moindre particule de noblesse ou de courage. Je dis au peuple Palestinien
+que ça me fait mal au cœur de vous voir souffrir et de ne rien pouvoir faire, et ça me fait encore plus mal que 
+les gouvernements qui prétendent être musulmane vous faite du mal et conspirent contre vous au-lieu de vous aider, tous 
+ça pour gagner la bénédiction de leurs maîtres. 
+Mais bi idni Allah, nous continuerons de nous développer pour pouvoir vous être utile dans un future proche.
+
+Je dédie aussi ce travail aux peuples opprimés à travers le monde entier, peu importe leurs religions, peu importe
+leurs origines. L'injustice reste de l'injustice, peu importe qui est l'oppresseur, peu importe qui est l'oppressé.
+
+\vfill
+Sidahmed
+\vfill
+
+
+
+% fin =============================================================================================================
+
+
 
 \chapter*{Remerciements}
-Les remerciements ici.
+Nous voudrons commencer par remercier \textsc{dieu}, le miséricordieux, qui nous a donnée les moyens et la force
+d'aller jusqu'au bout de ce projet.
+
+Nous sommes très reconnaissants à Monsieur Belkheir et Madame d'avoir accepté de juger notre travail.
+
+Nous tenons à remercier notre promoteur Monsieur \textsc{Zeroualia} Khaled.
+
+Un très grand merci à Monsieur \textsc{Adda} Mohamed pour son soutient et son aide précieux. %Sans monsieur 
+% \textsc{Adda}, nous aurions jamais pu arriver jusque là, alors un très grand merci à ce Monsieur dont 
+% les compétences et la gentillesse dépasse l'imagination.
+
+Nous voudrons aussi remercier le département de l'informatique d'ELIT, de nous avoir accordé un moment précieux de
+leurs temps inestimable.
+
+Enfin, nous remercions tous ceux qui ont contribué de près ou de loin à la réalisation de ce projet.
+
+% Avant tout, j’adresse mes sincères remerciements à Eric GRESSIER-SOUDAN et
+% Claude VILLARD pour leur soutien tout au long de ces trois années de thèse. Je ne
+% saurais dire combien nos échanges et leurs nombreux conseils m’ont été précieux.
+% Je tiens à exprimer toute ma gratitude à Laurent GEORGE qui m’a accueilli dans son
+% équipe et m’a permis de mener à bien ce travail. Nos discussions, toujours très fructueuses,
+% ont beaucoup compté dans l’orientation de mes recherches et l’aboutissement de ces trois
+% années d’études.
+% Je remercie vivement Guy JUANOLE et Zoubir MAMMERI d’avoir accepté d’être les
+% rapporteurs de ma thèse. Leurs remarques et conseils, tous très constructifs, m’ont beaucoup
+% aidé.
+% Je suis très reconnaissant à Joël GOOSSENS, Pierre LEBEE et Yves SOREL d’avoir participé
+% à mon jury de thèse et les en remercie sincèrement.
+% Je souhaite également remercier mes anciens collègues et amis Céline BARTH, Chrystelle
+% GUEGAN, Parinaz LAHMI, Jean-Marc BAUDON et Sio-Hoï IENG pour leur sympathie
+% et leur bonne humeur.
+% Enfin, je remercie mes collègues de l’École Nationale Supérieure d’Informatique pour l’Industrie
+% et l’Entreprise, et tout particulièrement Catherine DUBOIS et Olivier PONS, qui,
+% en plus d’être toujours disponibles, m’ont constamment prodigué d’excellents conseils.
+% Bien sûr, je ne peux terminer sans remercier mes proches de tout coeur et notamment mes
+% parents qui, au cours de ces trois années de thèse, m’ont toujours soutenu et encouragé,
+% comme d’habitude...
