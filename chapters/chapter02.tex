@@ -3,7 +3,7 @@
 % Changer l'introduction (car vous avez ajouter le hacking)
 Le premier chapitre de ce mémoire portera sur quelques notions et concepts de base de la 
 sécurité informatique, à l’effet d’éclaircir et de définir une terminologie et un vocabulaire 
-spécifique à ce domaine d’activité. 
+spécifique à ce domaine d’activité. %vérifié
 
 \newpage
 
@@ -74,7 +74,8 @@ spécifique à ce domaine d’activité.
 
     \subsection{Les objectifs de la sécurité informatique}
     La sécurité informatique consiste en générale à assurer que les ressources matérielles ou logicielles sont 
-    uniquement utilisé dans le cadre prévu. La sécurité informatique vise généralement cinq principaux objectifs :
+    uniquement utilisées dans le cadre prévu. La sécurité informatique vise généralement cinq principaux objectifs :
+    %vérifié
     \begin{description}
         \item[L'intégrité :] Consiste à déterminer si les données n'ont pas été altérées durant la communication 
             (de manière fortuite ou intentionnelle).
@@ -86,12 +87,12 @@ spécifique à ce domaine d’activité.
             ne pourra nier la transaction.
         \item[L'authentification :] Consiste à assurer l'identité d'un utilisateur, et bien garantir que chaque
             personne est celui qu'il prétend être.
-    \end{description}
+    \end{description} %vérifié
 
     \subsection{Les attaques informatiques}
     Une attaque informatique est une attaque offensive pour l’exploitation des systèmes informatiques, 
     des entreprises, et des réseaux, est-ce par divers moyens d’actes malveillants. 
-    Il existe de multiples catégories d’attaques informatiques dont les buts et les techniques différents.
+    Il existe de multiples catégories d’attaques informatiques dont les buts et les techniques différents. %vérifié
     \begin{description}
         % \item[Interruption :] Avec ce type d'attaque, un atout du système est détruit ou mis hors d'état d'utilisation.
             % C'est une attaque portée à la \emph{disponibilité}. Exemples : la destruction d'une pièce matérielle, 
@@ -110,113 +111,115 @@ spécifique à ce domaine d’activité.
     
 \section{Le Hacking}
     Le hacking \cite{bases_hacking} est l'art et la manière de modifier un élément physique ou virtuel 
-    de sorte à ce que celui-ci n'ait pas le comportement prévu initialement par ses créateurs. 
+    de sorte à ce que celui-ci n'ait pas le comportement prévu initialement par ses créateurs. %vérifié
 
     Démarrer une voiture sans clé est du hacking de la même façon que cracker le mot de passe de la session 
     d'un utilisateur ou accéder à des informations cryptées. Tout ce qui n'était pas prévu par le concepteur et 
-    qui a été détourné de toute forme qui soit est du hacking. 
+    qui a été détourné de toute forme qui soit est du hacking. %vérifié
 
     Le hacking ne se résume donc pas au cracking wifi du voisin ou à la prise de possession de l'ordinateur 
-    d'une victime.
+    d'une victime. %vérifié
 
     Les hackers sont des personnes bien ou mal intentionnées qui utilisent leurs connaissances pour exploiter 
     des failles dans des environnements distincts afin d'effectuer des modifications entraînant une attitude 
-    différente de celle que l'auteur a prévu pour pouvoir en tirer un avantage.
+    différente de celle que l'auteur a prévu pour pouvoir en tirer un avantage. %vérifié
 
     Cela peut paraître néfaste ; et ça l'est dans certains cas. Cependant, sans les hackers, internet ne prendrait 
-    pas la tournure qu'il est entrain de prendre, à savoir une tournure open source et communautaire, 
-    déliée des pouvoirs qui tentent de se l'accaparer. \cite{hacking} ! 
+    pas la tournure qu'il est en train de prendre, à savoir une tournure open source et communautaire, 
+    déliée des pouvoirs qui tentent de se l'accaparer. \cite{hacking} %vérifié
 
     \subsection{Différents type de hacker}
-    Il existe différents types de hackers dans le monde de la sécurité informatique. On y trouve : 
+    Il existe différents types de hackers dans le monde de la sécurité informatique. On y trouve : %vérifié
     \cite{types_de_hacker}
 
     \begin{description}
-        \item[Les gamins des scripts :] aussi appelé \emph{Script Kiddie}. 
+        \item[Les gamins des scripts :] Aussi appelé \emph{Script Kiddie}. 
             Ce sont des personnes qui utilisent des outils, des scripts, et des programmes
-            créé par des vrais hackers. Dans des mots plus simples, ce sont ceux qui ne savent pas comment 
+            créés par des vrais hackers. Dans des mots plus simples, ce sont ceux qui ne savent pas comment 
             les systèmes marchent, mais qui arrivent quand même à les exploiter en utilisant des outils qui 
-            existent déjà.
+            existent déjà. %vérifié
 
-        \item[Les hackers aux Chapeaux Blancs :] aussi appelé \emph{White Hat Hackers}.
-            Ce sont les gars gentille qui utilisent le hacking pour défendre. 
-            Le but principale d'un hacker au chapeau blanc est d'améliorer la sécurité des systèmes, en trouvant
-            des failles de sécurités et les fixer. Ils travaille pour des organisations ou individuellement, pour 
-            rendre le cyberespace plus sécurisé.
+        \item[Les hackers aux Chapeaux Blancs :] Aussi appelé \emph{White Hat Hackers}.
+            Ce sont les gars gentils qui utilisent le hacking pour défendre. 
+            Le but principal d'un hacker au chapeau blanc est d'améliorer la sécurité des systèmes, en trouvant
+            des failles de sécurités et les fixer. Ils travaillent pour des organisations ou individuellement, pour 
+            rendre le cyberespace plus sécurisé. 
 
-            Le slogan de cette catégorie de hacker est : \emph{Apprendre l'attaque pour mieux se défendre}.
+            Le slogan de cette catégorie de hacker est : \emph{Apprendre l'attaque pour mieux se défendre}. %vérifié
             
-        \item[Les hackers aux chapeaux noirs :] aussi appelé \emph{Black Hat Hackers}.
-            Ce sont vraiment les mauvais gars, qui ont des intentions malicieuses. Il utilisent le hacking 
-            pour voler de l'argent, infecté des systèmes avec les Malwares (\autoref{malwares}) \ldots{} etc.
+        \item[Les hackers aux chapeaux noirs :] Aussi appelé \emph{Black Hat Hackers}.
+            Ce sont vraiment les mauvais gars, qui ont des intentions malicieuses. Ils utilisent le hacking 
+            pour voler de l'argent, infecté des systèmes avec les Malwares (\autoref{malwares}) \ldots{} etc. %vérifié
 
         \item[Les hackers aux chapeaux gris :] aussi appelé \emph{Grey Hat Hackers}.
-            Ce sont des hackers qui n'ont pas d'intentions malicieuses, mais qui tentent quand même de pénétrer un système
-            dont ils n'ont pas l'autorisation d'accès, juste pour le plaisir ou pour démontrer l’existence d'une faille de sécurité.
+            Ce sont des hackers qui n'ont pas d'intentions malicieuses, mais qui tentent quand même de pénétrer 
+            un système dont ils n'ont pas l'autorisation d'accès, juste pour le plaisir ou pour démontrer 
+            l'existence d'une faille de sécurité. %vérifié
 
-        \item[Les Hacktivists :] Les hackers appartenant à cette catégorie utilisent leurs compétences pour 
+        \item[Les Hacktivists :] Les hackers appartenant à cette catégorie, utilisent leurs compétences pour 
             dénoncer l'injustice et/ou attaquer le système ou le site web d'une entité responsable d'une injustice. 
-            L'un des Hacktivists le plus connu est \emph{Anonymous}.
+            L'un des Hacktivists le plus connu est \emph{Anonymous}. %vérifié
     \end{description}
 
     \subsection{Les phases d'un hacking réussi}
-    Il y a en tout cinq grandes phases, qui lorsqu'elles sont accomplies avec succès garantissent presque 
+    Il y a en tout cinq grandes phases, qui lorsqu'elles sont accomplies avec succès, garantissent presque 
     toujours un hacking \cite{bases_hacking} réussi. Le hacker devra donc les couvrir une 
-    par une et en tirer des conclusions.
+    par une et en tirer des conclusions. %vérifié
 
-    Les cinq phases du hacking sont les suivantes \cite{phases_of_hacking} :
+    Les cinq phases du hacking sont les suivantes \cite{phases_of_hacking} : %vérifié
     \begin{description}
         \item[La reconnaissance :] C'est la phase primaire où le hacker essaye de collecter autant d'informations que
         possible sur la cible. Ça inclut l'identification de la cible, trouver les adresses IP \cite{reseau}
-        de la cible \ldots{} etc.
+        de la cible \ldots{} etc. %vérifié
 
         \item[Le scan :] Ça consiste à prendre les informations découvertes durant la phase de reconnaissance, et 
             les utilisés pour examiner le réseau de la cible. Les outils qui peuvent être utilisés par 
-            le hacker durant cette phase sont les scanners de ports et les scanners de vulnérabilités.
+            le hacker durant cette phase sont les scanners de ports et les scanners de vulnérabilités. %vérifié
 
-        \item[Le gain d'accès :]  Après le scan, le hacker modélise le plan du réseau de la cible avec l'aide
+        \item[Le gain d'accès :] Après le scan, le hacker modélise le plan du réseau de la cible avec l'aide
             des données récoltées pendant les deux phases précédentes. C'est la 
             phase où le vrai hacking se déroule. Les vulnérabilités découvertes durant les phases précédentes sont 
-            maintenant exploité pour gagner un accès à la cible.
+            maintenant exploitées pour gagner un accès à la cible. %vérifié
 
         \item[Le maintien d'accès :] Une fois le hacker a gagné l'accès à la cible, la prochaine étape consiste à 
-            maintenir cette accès, pour une future utilisation.
+            maintenir cet accès pour une future utilisation. %vérifié
 
-        \item[La couverture des traces :] Une fois le hacker a pu gagné et maintenir l'accès, il couvre ses traces 
+        \item[La couverture des traces :] Une fois le hacker a pu gagner et maintenir l'accès, il couvre ses traces 
             pour éviter qu'il soit détecter par les personnels de la sécurité, pour continuer d'utiliser le système.
             Les hackers essayent de supprimer toute trace de l'attaque, comme les fichiers journaux ou 
-            les alarmes des systèmes de détections d'intrusions.
+            les alarmes des systèmes de détections d'intrusions. %vérifié
 
     \end{description}
 
     \subsection{Les vulnérabilités}
-    Les vulnérabilités sont des points faibles par laquelle l'intégrité d'un système peut être atteinte. Ces points 
-    faibles ne sont pas toujours exploitables ; cependant, elles peuvent être combinés pour réussir une exploitation. 
+    Les vulnérabilités sont des points faibles par lesquels l'intégrité d'un système peut être atteinte. Ces points 
+    faibles ne sont pas toujours exploitables ; cependant, elles peuvent être combinées pour 
+    réussir une exploitation. %vérifié
     
-    Les vulnérabilités peuvent être exploitées pour infiltré un système, ou pour obtenir des privilèges supplémentaires
-    sur des systèmes déjà atteintes. Elles peuvent être exploités automatiquement par les Malwares 
-    (\autoref{malwares}), ou manuellement par des personnes visant directement un système.
+    Les vulnérabilités peuvent être exploitées pour infiltrer un système, ou pour obtenir des privilèges supplémentaires
+    sur des systèmes déjà atteints. Elles peuvent être exploitées automatiquement par les Malwares 
+    (\autoref{malwares}), ou manuellement par des personnes visant directement un système. %vérifié
 
-    Les vulnérabilités se divise en deux catégories, selon où elles se situent :
+    Les vulnérabilités se divisent en deux catégories, selon l'endroit où elles se situent : %vérifié
     
     \begin{description}
         \item[Vulnérabilités techniques :] Elles proviennent souvent de la négligence ou de l'inexpérience d'un 
             programmeur. Une vulnérabilité de cette catégorie permet généralement à un attaquant de duper 
             une application, par exemple en outrepassant les vérifications de contrôle d'accès ou en exécutant
             des commandes sur le système hébergeant l'application.
-            \label{buffer_overflow}
+            \label{buffer_overflow} %vérifié
 
             Quelques vulnérabilités techniques surviennent lorsque l'entrée d'un utilisateur n'est pas contrôlée,
             permettant l'exécution de commandes ou de requêtes. D'autres proviennent d'erreurs d'un programme
-            lors de la vérifications des tampons de données (qui peuvent être dépassés), 
+            lors de la vérification des tampons de données (qui peuvent être dépassés), 
             causant ainsi une corruption de la pile mémoire
-            (et ainsi permettre l'exécution de code fourni par l'attaquant). \cite{vulnerabilites}
+            (et ainsi permettre l'exécution de code fourni par l'attaquant). \cite{vulnerabilites} %vérifié
 
         \item[Vulnérabilités humaines :] Les humains sont le maillon le plus faible dans la chaîne de sécurité.
             Les humains peuvent oublier d'appliquer des patchs de sécurité critique, introduire des bugs
             exploitable, configurer mal leurs logiciels au point de les rendre vulnérables \ldots{}
-            Il existe même une catégorie d'attaque dédié à duper les individu, appelé \emph{ingénierie sociale} 
-            \cite{bases_hacking}.
+            Il existe même une catégorie d'attaque dédiée à duper les individus, appelée \emph{ingénierie sociale} 
+            \cite{bases_hacking}. %vérifié
     \end{description}
 
 \section{Les Malwares} \label{malwares}
@@ -258,13 +261,14 @@ spécifique à ce domaine d’activité.
             dans des fichiers de données utilisant un langage de script ou dans le secteur de démarrage 
             d’un disque dur. Lors de l'accès à ces programmes ou secteur, le code du virus s'exécutera de 
             façon d'abord silencieuse (phase de multiplication pendant laquelle il infectera d'autres fichiers) 
-            puis visible (activation de la fonction nocive).
+            puis visible (activation de la fonction nocive). %vérifié
 
             La fonction nocive pourra être déclenchée par un événement particulier, elle peut se limiter 
             à l'affichage d'un message agaçant ou, plus généralement, conduire à des perturbations graves 
             de l'ordinateur comme des ralentissements du fonctionnement, effacement ou corruption de 
             fichiers ou pire encore le formatage du disque dur. \cite{virus_informatique} %vérifié
 % J'ai ajouté cette partie.
+
             Ci-dessous se trouve un pseudo code exemple d'un virus informatique :
             \begin{verbatim}
                 def virus():
@@ -286,13 +290,13 @@ spécifique à ce domaine d’activité.
             Les vers installent généralement sur l'ordinateur d'autres programmes nocifs : comme les logiciels 
             espions, les Keyloggers, et les portes dérobées. \cite{ver_informatique}
 
-        \item[Porte dérobée :] Une porte dérobée est n'importe quel mécanisme qui peut contourner un
+        \item[Porte dérobée :] \label{backdoor} Une porte dérobée est n'importe quel mécanisme qui peut contourner un
             contrôle de sécurité ordinaire. Les programmeurs créent dés fois des portes dérobées pour 
             des raisons légitimes, telles que passer une procédure d'authentification coûteuse lors 
             de débogage d'un service réseau.
 
             Comme les bombes logiques, les portes dérobées peuvent être insérées dans un code existant, comme elle
-            peuvent être autonomes. Ci-dessous se trouve pseudo code exemple d'une porte dérobée insérer dans 
+            peuvent être autonomes. Ci-dessous se trouve un pseudo code exemple d'une porte dérobée insérer dans 
             un code existant :
             \begin{verbatim}
                 nom_utilisateur = lecture()
@@ -374,4 +378,4 @@ spécifique à ce domaine d’activité.
 
 \section{Conclusion}
 À la fin de ce premier chapitre, certaines notions sur le domaine de la sécurité informatique de manière générale, et sur le Hacking et les programmes malveillants sont désormais plus claires. 
-Leur compréhension est indispensable pour la suite de l'étude.
+Leur compréhension est indispensable pour la suite de l'étude. %vérifié
