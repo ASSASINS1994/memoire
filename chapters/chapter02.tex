@@ -1,6 +1,5 @@
 %!TEX root = ../main.tex
 
-% Changer l'introduction (car vous avez ajouter le hacking)
 Le premier chapitre de ce mémoire portera sur quelques notions et concepts de base de la 
 sécurité informatique, à l’effet d’éclaircir et de définir une terminologie et un vocabulaire 
 spécifique à ce domaine d’activité. %vérifié
@@ -28,7 +27,7 @@ spécifique à ce domaine d’activité. %vérifié
         \item[Spam :] Le terme couramment utilisé pour décrire les courriers électroniques non sollicités envoyés 
             en grand nombre à des boîtes aux lettres électroniques ou à des forums, dans un but publicitaire 
             ou commercial. Les statistiques varient au fil du temps, mais suggèrent que plus de 
-            70\% du trafic des courriers électroniques tombe dans cette catégorie.%vérifié
+            70\% \cite{spam} du trafic des courriers électroniques tombe dans cette catégorie.%vérifié
         \item[Bugs :] Ce sont des erreurs logicielles qui, quand elles surgissent, peuvent faire crasher votre 
             logiciel immédiatement, si vous êtes chanceux. Elles peuvent également entraîner une corruption de données,
             des failles de sécurité, et des problèmes très difficiles à trouver. \cite{virus} %vérifié
@@ -78,25 +77,22 @@ spécifique à ce domaine d’activité. %vérifié
     %vérifié
     \begin{description}
         \item[L'intégrité :] Consiste à déterminer si les données n'ont pas été altérées durant la communication 
-            (de manière fortuite ou intentionnelle).
+            (de manière fortuite ou intentionnelle) \cite{objectif_intrapole} .
         \item[La confidentialité :] Consiste à rendre l'information inaccessible à d'autres personnes que les 
-            seuls acteurs de transaction.
+            seuls acteurs de transaction \cite{objectif_comment_ca_marche} .
         \item[La disponibilité :] L'objectif de la disponibilité est de garantir l'accès à un service 
-            ou à des ressources.
+            ou à des ressources \cite{objectif_comment_ca_marche} .
         \item[La non-répudation :] La non-répudation de l'information est la garantie qu'aucun des correspondants 
-            ne pourra nier la transaction.
+            ne pourra nier la transaction \cite{objectif_comment_ca_marche} .
         \item[L'authentification :] Consiste à assurer l'identité d'un utilisateur, et bien garantir que chaque
-            personne est celui qu'il prétend être.
+            personne est celui qu'il prétend être \cite{objectif_intrapole} .
     \end{description} %vérifié
 
     \subsection{Les attaques informatiques}
-    Une attaque informatique est une attaque offensive pour l’exploitation des systèmes informatiques, 
+    Une attaque informatique est une attaque \emph{active} ou \emph{passive} pour l'exploitation des systèmes informatiques, 
     des entreprises, et des réseaux, est-ce par divers moyens d’actes malveillants. 
     Il existe de multiples catégories d’attaques informatiques dont les buts et les techniques différents. %vérifié
     \begin{description}
-        % \item[Interruption :] Avec ce type d'attaque, un atout du système est détruit ou mis hors d'état d'utilisation.
-            % C'est une attaque portée à la \emph{disponibilité}. Exemples : la destruction d'une pièce matérielle, 
-            % la coupure d'une ligne de communication, ou la mise hors service d'un système de gestion de fichiers.
         \item[Interruption :] Ce type d'attaque vise la \emph{disponibilité}. Il s’agit de compromettre les 
             ressources physiques ou logiques d'un système. Exemple : les attaques \emph{DoS} et \emph{mac flooding}.
             %vérifié
@@ -115,18 +111,18 @@ spécifique à ce domaine d’activité. %vérifié
 
     Démarrer une voiture sans clé est du hacking de la même façon que cracker le mot de passe de la session 
     d'un utilisateur ou accéder à des informations cryptées. Tout ce qui n'était pas prévu par le concepteur et 
-    qui a été détourné de toute forme qui soit est du hacking. %vérifié
+    qui a été détourné de toute forme qui soit est du hacking  \cite{hacking} . %vérifié
 
     Le hacking ne se résume donc pas au cracking wifi du voisin ou à la prise de possession de l'ordinateur 
     d'une victime. %vérifié
 
     Les hackers sont des personnes bien ou mal intentionnées qui utilisent leurs connaissances pour exploiter 
     des failles dans des environnements distincts afin d'effectuer des modifications entraînant une attitude 
-    différente de celle que l'auteur a prévu pour pouvoir en tirer un avantage. %vérifié
+    différente de celle que l'auteur a prévu pour pouvoir en tirer un avantage \cite{hacking} . %vérifié
 
     Cela peut paraître néfaste ; et ça l'est dans certains cas. Cependant, sans les hackers, internet ne prendrait 
     pas la tournure qu'il est en train de prendre, à savoir une tournure open source et communautaire, 
-    déliée des pouvoirs qui tentent de se l'accaparer. \cite{hacking} %vérifié
+    déliée des pouvoirs qui tentent de se l'accaparer \cite{hacking} . %vérifié
 
     \subsection{Différents type de hacker}
     Il existe différents types de hackers dans le monde de la sécurité informatique. On y trouve : %vérifié
@@ -230,6 +226,7 @@ spécifique à ce domaine d’activité. %vérifié
     de leurs modes de fonctionnement et de leurs objectifs principaux. \cite{malware_types}%vérifié
 
     \subsection{Les types des Malwares}
+
     \begin{description}
         \item[Bombe logique :] Une bombe logique est un code constitué principalement de deux parties :
             \begin{enumerate}
@@ -252,45 +249,20 @@ spécifique à ce domaine d’activité. %vérifié
             millions de lignes de code, et elle peut être utilisée facilement pour causer des 
             dégâts phénoménaux. \cite{virus} %vérifié
 
-        \item[Virus :] Un virus informatique est un programme parasite généralement de petite taille, 
-            doté d’une capacité d’infection et de multiplication, et possède une fonction nocive appelée 
-            \emph{Payload}\footnote{Le terme Payload (charge utile en français) au figuré pour désigner 
-            la partie du code exécutable d'un virus qui est spécifiquement destinée à nuire.}.
-
-            La fonction d'infection permet au virus de s'introduire dans des fichiers de programme, 
-            dans des fichiers de données utilisant un langage de script ou dans le secteur de démarrage 
-            d’un disque dur. Lors de l'accès à ces programmes ou secteur, le code du virus s'exécutera de 
-            façon d'abord silencieuse (phase de multiplication pendant laquelle il infectera d'autres fichiers) 
-            puis visible (activation de la fonction nocive). %vérifié
-
-            La fonction nocive pourra être déclenchée par un événement particulier, elle peut se limiter 
-            à l'affichage d'un message agaçant ou, plus généralement, conduire à des perturbations graves 
-            de l'ordinateur comme des ralentissements du fonctionnement, effacement ou corruption de 
-            fichiers ou pire encore le formatage du disque dur. \cite{virus_informatique} %vérifié
-% J'ai ajouté cette partie.
-
-            Ci-dessous se trouve un pseudo code exemple d'un virus informatique :
-            \begin{verbatim}
-                def virus():
-                infecter()
-                if gachette() is True:
-                    executer_charge()
-            \end{verbatim}
-
         \item[Ver :] Un ver informatique est un programme autonome qui peut s'auto-reproduire, 
-            et qui ne repose pas sur d’autre exécutable. Il se propagent d'une machine à travers les 
+            et qui ne repose pas sur d’autres exécutables. Il se propagent d'une machine à travers les 
             réseaux en profitant des ports ouverts, mais la méthode la plus classique consiste à s'introduire 
-            sous la forme d'une pièce jointe attachée à un mail.
+            sous la forme d'une pièce jointe attachée à un mail.%vérifié
 
             Un ver ne se multiplie pas localement, contrairement aux virus, mais sa méthode la plus 
             habituelle de propagation consiste à s'envoyer dans des mails générés automatiquement. 
             Ces mails sont expédiés à l'insu de l'utilisateur vers diverses adresses. 
-            Ces adresses sont généralement prélevées par le ver dans les fichiers présents sur le disque
+            Ces adresses sont généralement prélevées par le ver dans les fichiers présents sur le disque%vérifié
 
             Les vers installent généralement sur l'ordinateur d'autres programmes nocifs : comme les logiciels 
             espions, les Keyloggers, et les portes dérobées. \cite{ver_informatique}
 
-        \item[Porte dérobée :] \label{backdoor} Une porte dérobée est n'importe quel mécanisme qui peut contourner un
+        \item[Porte dérobée :] \label{backdoor} Une porte dérobée (aussi appelée Backdoor) est n'importe quel mécanisme qui peut contourner un
             contrôle de sécurité ordinaire. Les programmeurs créent dés fois des portes dérobées pour 
             des raisons légitimes, telles que passer une procédure d'authentification coûteuse lors 
             de débogage d'un service réseau.
@@ -373,8 +345,10 @@ spécifique à ce domaine d’activité. %vérifié
             auditives avant l'envoi d'une requête, pour assurer que c'est un utilisateur humain.} qui vérifie que 
             les utilisateurs qui utilisent les services du site sont belle et bien des humains. 
             \cite{malware_types} %vérifié
-    \end{description}
 
+            \item[Virus :] Comme la majeure partie de cette étude concerne ce type de Malware, 
+            le prochaine chapitre lui sera consacré.
+    \end{description}
 
 \section{Conclusion}
 À la fin de ce premier chapitre, certaines notions sur le domaine de la sécurité informatique de manière générale, et sur le Hacking et les programmes malveillants sont désormais plus claires. 

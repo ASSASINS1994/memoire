@@ -1,23 +1,49 @@
 %!TEX root = ../main.tex
 
-Le deuxième chapitre de ce mémoire parlera sur les différentes techniques utilisées par les virus 
+Le deuxième chapitre de ce mémoire décrira les différentes techniques utilisées par les virus 
 dans le processus d'infection, ainsi que les techniques employées par ces derniers pour dissimuler leurs présences.
-%virifé
+%vérifié
 
 Ce chapitre portera aussi sur différentes notions qui ont une relation plus ou moins indirecte avec les virus,
 et qui sont nécessaires pour la réalisation d'une étude plus propre et plus claire. %vérifié
 
 \newpage
 
-% \section{Infection virale}
-    % \subsection{Introduction}
+\section{Les virus} 
+Un virus informatique est un programme parasite généralement de petite taille, 
+doté d’une capacité d’infection et de multiplication, et possède une fonction nocive appelée 
+\emph{Payload}\footnote{Le terme Payload (charge utile en français) au figuré pour désigner 
+la partie du code exécutable d'un virus qui est spécifiquement destinée à nuire.}.
+
+La fonction d'infection permet au virus de s'introduire dans des fichiers de programme, 
+dans des fichiers de données utilisant un langage de script ou dans le secteur de démarrage 
+d’un disque dur. Lors de l'accès à ces programmes ou secteur, le code du virus s'exécutera de 
+façon d'abord silencieuse (phase de multiplication pendant laquelle il infectera d'autres fichiers) 
+puis visible (activation de la fonction nocive). %vérifié
+
+La fonction nocive pourra être déclenchée par un événement particulier, elle peut se limiter 
+à l'affichage d'un message agaçant ou, plus généralement, conduire à des perturbations graves 
+de l'ordinateur comme des ralentissements du fonctionnement, effacement ou corruption de 
+fichiers ou pire encore le formatage du disque dur. \cite{virus_informatique} %vérifié
+
+Les virus peuvent se propager d'une machine a une autre par biais des périphérique de stockage comme les disquettes, 
+les CD-ROM ou les clé USB.
+
+Ci-dessous se trouve un pseudo code exemple d'un virus informatique :
+\begin{verbatim}
+    def virus():
+        infecter()
+        if gachette() is True:
+            executer_charge()
+\end{verbatim}
+
 
 \section{Classification des virus par cible}
 L'un des moyens de classifications des virus est de voir ce qu'ils essayent d'infecter.
 Dans cette section, trois classes de virus seront abordées : les virus visant les programmes, les virus système,
 et les virus interprétés. %vérifié
 
-    \subsection{Virus visant programme}
+    \subsection{Virus visant les programmes}
     Les virus qui visent les programmes, cherchent à infecter les exécutables binaires compilés. 
     Le principe de fonctionnement est le suivant : le virus est présent dans un fichier exécutable, lorsque 
     ce dernier est exécuté, le virus choisit et contamine un ou plusieurs autres fichiers ; si le virus se maintient
@@ -33,31 +59,11 @@ et les virus interprétés. %vérifié
             de diminuer pour être presque inexistante aujourd’hui. %vérifié
         \item[Applications Windows 16 bits :] Ces programmes sont aussi appelés \emph{New Executable} (NE).
             Ils sont rencontrés dans les environnements \emph{Windows 3.x}. %vérifié
-        \item[Applications Windows 32 bits :] Ces programmes sont aussi appelés \emph{Portable Executable}
+
+        \item[Applications Windows 32/64 bits :] Ces programmes sont aussi appelés \emph{Portable Executable}
             (PE). Ils sont rencontrés dans les environnements \emph{Windows actuels}.%vérifié
+
     \end{description}
-
-    % Pour cette classe, les virus choisissent l'une des trois techniques, présentés ci-dessous, 
-    % pour infecter les fichiers exécutables.
-    %     \subsubsection{Ajout au début du fichier}
-    %     Les anciens format exécutable traités tout le fichier comme une combinaison de code et de données.
-    %     Quand le fichier est exécuté, ce dernier est chargé complètement en mémoire, et l'exécution commence
-    %     du début du fichier.
-
-    %     Avec ce type d'exécutable, si le virus s'ajoute au début du fichier, il obtiendra le contrôle 
-    %     automatiquement dés l'exécution de ce dernier. Cette technique d'infection est relativement facile,
-    %     mais ce n'est pas la méthode la plus simple d'infecter un fichier.
-
-    %     \subsubsection{Ajout à la fin du fichier}
-    %     Cette technique implique que le virus ajoute son code à la fin du fichier exécutable. C'est facile
-    %     à mettre en place, et ça demande pas beaucoup d'effort.
-
-    %     Comment le virus obtient-il le contrôle en utilisant cette méthode ? Il y a deux possibilités :
-    %     \begin{itemize}
-    %         \item Une ou plusieurs instructions du code original peuvent être sauvegardées, et remplacées 
-    %             par une instruction de saut inconditionnel vers le code viral. 
-    %             Plus tard, le virus remettra le contrôle au code qu'il a infecté. Le virus pourra 
-    %     \end{itemize}
 
     \subsection{Virus système}
     Pour une meilleure compréhension de cette section, il est indispensable d'expliquer la procédure 
@@ -65,19 +71,18 @@ et les virus interprétés. %vérifié
     la démarche générale reste la même : \cite{virus} %vérifié
     \begin{enumerate}
         \item Allumage. %vérifié
-        \item Les instructions de la ROM sont exécutées, avec un auto-test, détection de périphérique et 
-            initialisation. Le périphérique de démarrage est identifié, et le secteur de démarrage est 
-            lu de ce dernier. Une fois le secteur de démarrage est lu, le contrôle est transféré au code chargé. 
+        \item Les instructions de la ROM sont exécutées  avec un auto-test, détection de périphérique et 
+            initialisation. Le périphérique de démarrage est identifié et le secteur de démarrage est 
+            lu de ce dernier. Une fois cette action accomplie, le contrôle est transféré au code chargé. 
             Cette étape est appelée le démarrage primaire. %vérifié
         \item Le code chargé durant le démarrage primaire, charge un programme encore plus grand et plus sophistiqué 
-            qui comprend la structure des systèmes de fichiers, et il lui donne le contrôle. Cette étape est appelée
+            qui comprend la structure des systèmes de fichiers et lui donne le contrôle. Cette étape est appelée
             le démarrage secondaire. %vérifié
         \item Le démarrage secondaire charge et exécute le noyau du système d'exploitation. %vérifié
     \end{enumerate}
     
-    Un virus appartenant à cette classe infecte en se copiant dans le secteur de démarrage. Le virus, après,
-    copie le contenu du secteur de démarrage dans un autre emplacement sur le disque dur, pour que le virus 
-    puisse lui transférer le contrôle après, pour que la procédure de démarrage continue normalement.
+    Un virus appartenant à cette classe infecte en se copiant dans le secteur de démarrage. Puis il copie le contenu du secteur de démarrage dans un autre emplacement sur le disque dur  pour que le virus 
+    puisse lui transférer le contrôle afin que la  procédure de démarrage continue normalement.
     \cite{virus} %vérifié
 
     Le problème qui peut se poser avec la préservation du secteur de démarrage, est que l'allocation d'un secteur 
@@ -90,9 +95,10 @@ et les virus interprétés. %vérifié
     le code de démarrage en l'écrasant avec le code d'un autre virus de même classe. \cite{virus} %vérifié
 
     Malgré les problèmes présentés ci-dessus, infecté le secteur de démarrage est une stratégie qui donne beaucoup
-    d'avantages au virus : même si la position du virus est connue, ce dernier s'exécute avant même que le système 
-    d'exploitation ou l'anti-virus voient le jour ; ce qui lui permet de bien se cacher en désactivant les mesures 
+    d'avantages au virus. Même si la position du virus est connue, ce dernier s'exécute avant même que le système 
+    d'exploitation ou l'anti-virus procède au démarrage ; ce qui lui permet de bien se cacher en désactivant les mesures 
     de sécurité avant leurs démarrages. %vérifié
+
 
     Les virus de cette classe sont rares maintenant, car la majorité des systèmes d'exploitation interdit l'écriture
     sur les secteurs de démarrage sans des autorisations bien précises.
@@ -106,7 +112,7 @@ et les virus interprétés. %vérifié
         cette technique tend à se développer. Un type de fichier aujourd’hui inoffensif pourra ainsi 
         rapidement devenir dangereux. \cite{virus_informatique_article} %vérifié
 
-        Jusqu’à l’arrivée de WM/Concept\footnote{Le WM/Concept est le premier macro virus largement connu
+        Jusqu’à l’arrivée de WM/Concept\footnote{Le WM/Concept est le premier macro-virus largement connu
         développé pour \emph{Microsoft Word 6.}} en 1995, le grand public était persuadé qu’un virus, 
         considéré à juste titre comme un programme, ne pouvait être véhiculé et introduit dans un ordinateur 
         qu’avec l'aide éventuelle d’un autre programme. En clair, seuls les fichiers exécutables ou les zones 
@@ -130,22 +136,21 @@ et les virus interprétés. %vérifié
         pour exécuter sa charge virale et infecter d'autres scripts. %vérifié
 
 \section{Classification des virus par techniques de dissimulations}
-Une autre façon de classer les virus est par la façon dont ils essaient de se cacher, 
+Une autre manière de classer les virus est par la façon dont ils essaient de se cacher, 
 à la fois des utilisateurs et des logiciels anti-virus. \cite{virus} %vérifié
 
     \subsection{Aucune dissimulation}
-    % Ne pas se cacher est une technique facile à implémenter dans un virus. 
     Le virus n'essaye pas de cacher sa présence ou son code, il réagit plutôt comme un exécutable ordinaire. %vérifié
 
     \subsection{Chiffrement}
-    L'idée est de chiffré le corps du virus (infection, gâchette, et charge) pour le rendre plus difficile à 
+    L'idée est de chiffrer le corps du virus (infection, gâchette, et charge) pour le rendre plus difficile à 
     détecter. Ce chiffrement n'est pas ce qu'appel les cryptographes un cryptage, mais plutôt un moyen pour
     brouiller la tâche de détection. \cite{virus} %vérifié
 
-    Quand le corps du virus est chiffré, il n'est pas exécutable, jusqu'à ce qu'il soit déchiffrer. Alors ce qui est 
-    exécuté avant tous dans le virus, est une boucle de déchiffrement, qui déchiffre le corps du virus, et lui passe 
-    le contrôle. Le principe est que la boucle de chiffrement est petite par rapport au corps du virus, ce qui la
-    rend plus difficile à détecter par les anti-virus. \cite{virus} %vérifié
+    Par ailleurs si le code du virus est chiffré, il ne peut être exécuter. Pour régler ce problème, une boucle 
+    de déchiffrement le précède. Celle ci sera exécuter en premier au lancement du virus, pour déchiffrer le 
+    corps de ce dernier. Le principe est que la boucle de chiffrement est petite par rapport au corps du virus, 
+    ce qui la rend plus difficile à détecter par les anti-virus. \cite{virus} %vérifié
 
     Les virus utilisent plusieurs méthodes pour chiffrer leurs corps, on y trouve : \cite{virus} %vérifié
     \begin{description}
@@ -187,7 +192,7 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
 
     \end{description}
     Le point faible majeur du chiffrement est que le corps du virus reste le même d'une infection à une autre. Ainsi, 
-    détecter une seule infection de ce virus, suffit pour détecter toutes les autres infections. \cite{virus} %vérifié
+    détecter une seule infection de ce virus suffit pour détecter toutes les autres infections. \cite{virus} %vérifié
 
     Une technique pour contourner ce problème consiste à changer la clé de chiffrement d'une infection à une autre, ce
     qui permet au virus d'avoir un corps (chiffré) différent à chaque infection. \cite{virus} %vérifié
@@ -200,10 +205,10 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
 
     \subsection{Oligomorphisme}
     En supposant que la clé de chiffrement est modifiée avec chaque infection, la seule partie qui ne change pas
-    dans le virus est la boucle de déchiffrement. Un anti-virus peut exploiter ce fait pour détecter le virus. 
+    dans le virus est la boucle de déchiffrement. Donc, un anti-virus peut exploiter ce fait pour détecter le virus. 
     \cite{virus} %vérifié
 
-    Un virus oligomorphe est un virus chiffré qui a dans la poche, un nombre limité (dizaines ou centaines) 
+    Un virus oligomorphe est un virus chiffré qui a dans la poche un nombre limité (dizaines ou centaines) 
     de boucles de déchiffrement. Le virus sélectionne une nouvelle boucle de déchiffrement 
     pour chaque nouvelle infection. \cite{virus} %vérifié
 
@@ -213,7 +218,7 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
     \subsection{Polymorphisme}
     Un virus polymorphe ressemble beaucoup au virus oligomorphes. Les deux chiffrent leurs corps, les deux changent leurs
     boucles de déchiffrement avec chaque nouvelle infection. Cependant, un virus polymorphe a un nombre infini de 
-    boucle de déchiffrement. Par exemple, le virus \emph{Tremor}, a six milliards boucles de déchiffrement. Il est
+    boucle de déchiffrement. Par exemple, le virus \emph{Tremor}, a six milliards de boucles de déchiffrement. Il est
     tout simplement impossible de détecter un virus polymorphe en cherchant toute les boucles de déchiffrement. 
     \cite{virus} %vérifié
 
@@ -226,7 +231,7 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         analysant simplement le code de ce dernier. %vérifié
 
         Alors, pour que les virus polymorphes puissent détecter leurs présences dans d'autres fichiers, ils utilisent
-        des mécanismes de détections qui sont indépendantes du code du virus. On y trouve : \cite{virus} %vérifié
+        des mécanismes de détections qui sont indépendants du code du virus. On y trouve : \cite{virus} %vérifié
         \begin{description}
             \item[La date de création/modification :] Le virus peut changer la date de modification/création
                 du fichier pour que la somme de tous les éléments de la date donne une constante. %vérifié
@@ -252,15 +257,12 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
 
             \end{description}
 
-        Il a été suggérer une fois que les systèmes peuvent être vaccinés contre des virus spécifiques en simulant
-        l'indicateur d'auto-détection du virus sur des systèmes non infectés. 
-        Malheureusement, il y a trop de virus pour que ça soit faisable. \cite{virus} %vérifié
 
         \subsubsection{Changer la boucle de déchiffrement}
         Le code dans un virus polymorphe est transformé avec chaque nouvelle infection en utilisant un moteur de
         mutation. Le moteur de mutation a un ensemble de techniques de transformations de code dans la poche ; 
         ces techniques permettent d'avoir, à partir d'une série de code en entrée, une autre série de code 
-        équivalente en sortie. Choisir quelles techniques appliquées peut être sélectionné aléatoirement 
+        équivalente en sortie. Choisir quelle technique appliquées peut être sélectionné aléatoirement 
         par le moteur de mutation. \cite{virus} %vérifié
 
         Le moteur de mutation utilise des techniques assez poussées en programmation pour 
@@ -268,12 +270,12 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         \cite{virus}
         \begin{description}
             \item[Instructions équivalentes :] En assembleur, il y a souvent des instructions élémentaires qui ont 
-                le même effet. Exemple : les instructions suivantes mettent toutes le registre \verb|ax| à zéro. %vérifié
+                le même effet. Exemple : les instructions suivantes mettent le registre \verb|ax| à zéro. %vérifié
                 \begin{verbatim}
                     clear ax
                     xor ax
                     and ax, 0
-                    move ax, 0
+                    mov ax, 0
                 \end{verbatim}
 
             \item[Séquence d'instructions équivalentes :] Les instructions équivalentes peuvent être généralisées à
@@ -282,16 +284,6 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
                     x = 1   <=>   y = 21
                                   x = y - 20
                 \end{verbatim}
-                % \begin{center}
-                % \begin{tabular}{lll}
-                %     x & = & 1      
-                % \end{tabular}
-                % $\Longleftrightarrow$
-                % \begin{tabular}{lll}
-                %     y & = & 21 \\
-                %     x & = & y - 20
-                % \end{tabular}
-                % \end{center}
             \item[Réorganisation des instructions :] Les instructions indépendantes l'une des autres peuvent 
                 être réorganisées, si ça ne change pas le comportement général du virus.
 
@@ -316,8 +308,8 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         \end{description}
 
     \subsection{Métamorphisme}
-    Les virus métamorphes sont des virus qui sont polymorphes dans leurs corps. Il ne sont pas chiffré, et donc n'ont
-    pas besoin de boucle de déchiffrement, mais évite la détection en fabriquant un nouveau corps avec chaque 
+    Les virus métamorphes sont des virus qui sont polymorphes dans leurs corps. Ils ne sont pas chiffrés et donc n'ont
+    pas besoin de boucles de déchiffrements or, ils évitent la détection en fabriquant un nouveau corps avec chaque 
     nouvelle infection. \cite{virus}
 
     Toutes les techniques de modifications utilisées par les virus polymorphes sont applicables aux virus métamorphes. 
@@ -326,30 +318,27 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
     un virus métamorphe doit changer son moteur de mutation avec chaque nouvelle infection.
     \cite{virus}
 
-    Bien que les virus polymorphes et métamorphes sont décidément non trivial pour détecter par les logiciels anti-virus
-    , ils est aussi difficile pour un auteur de virus de les mettre en œuvre correctement ; par conséquence, 
-    le nombre de virus appartenant à cette classe est petit par rapport au autres classes. 
-    \cite{virus}
 
 \section{Les techniques d'infections}
 
 % Petite introduction ici.
         \subsubsection{Recouvrement}
         Un virus par recouvrement se contente d’écraser partiellement ou en totalité le programme 
-        qu’il infecte. En conséquence, il le détruit au moins partiellement et rend son utilisation et 
-        son éradication impossible. %vérifié
+        qu’il infecte. En conséquence, il le détruit au moins partiellement et rend son utilisation impossible.
+        \cite{virus_informatique_article} %vérifié
 
         Dans le cas ou la taille du programme qui va être infecté est supérieure ou égale à la taille du virus, 
-        après infection sa taille ne sera pas modifiée, dans les cas contraires, 
-        celle-ci s’ajuste à la taille du code viral. %vérifié
+        après infection, sa taille ne sera pas modifiée, dans les cas contraires, 
+        celle-ci s’ajuste à la taille du code viral.\cite{virus_informatique_article} %vérifié
 
-        Ces virus ne sont généralement pas résidents en mémoire. Ne réalisant plus la fonction souhaitée, 
-        l’utilisateur les détecte rapidement. Les virus agissant par recouvrement ne réussissent jamais 
+        Ne réalisant plus la fonction souhaitée, 
+        l'utilisateur les détecte rapidement. Les virus agissant par recouvrement ne réussissent jamais 
         à se disséminer largement. %vérifié
 
         \subsubsection{Cavité}
         Connaissant la structure spécifique du type des programmes à contaminer, le virus modifie le point 
-        d'entrée du programme et insère tout ou partie de son code dans différentes zones non utilisées. %vérifié
+        d'entrée du programme et insère tout ou partie de son code dans différentes zones non utilisées.
+        \cite{virus_informatique_article} %vérifié
         
         Le fichier \emph{COMMAND.COM} fut longtemps la cible privilégiée de ce genre de virus ; 
         dans ce cas, le code viral pouvait se situer entre le bloc de code, le bloc des données, le bloc de pile 
@@ -358,7 +347,7 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         \subsubsection{Point d'entrée obscur}
         Avant infection, l'analyse du programme cible permet un positionnement du point d'entrée du code 
         viral en un lieu variable au sein du fichier. Le point d’entrée du programme et les instructions qui 
-        s’y situent sont inchangés. %vérifié
+        s’y situent sont inchangés. \cite{virus_informatique_article}%vérifié
 
         Lorsque cette technique est associée à une infection par cavité et à un codage polymorphique, 
         la détection devient très problématique. %vérifié
@@ -368,14 +357,15 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         %vérifié
 
         \subsubsection{Par virus compagnon}
-        Il existe une priorité d'exécution pour les fichiers exécutables : les .COM\footnote{note ici}, puis les .EXE, 
+        Il existe une priorité d'exécution pour les fichiers exécutables : les .COM\footnote{Un fichier .com est un 
+        fichier exécutable de format simple, sans en-tête et dont la taille ne dépasse pas 64 Ko}, puis les .EXE, 
         puis les .BAT\footnote{Les fichiers d'extension .bat sont des fichiers exécutables qui contiennent une 
         séquence de commandes. Les fichiers batch sont utiles pour stocker des ensembles de commandes qui sont 
         toujours exécutées ensemble pour éviter d’entrer chaque commande individuellement.}.
         Le virus compagnon va créer un fichier du même nom que le programme cible, 
         mais avec une extension différente. Si, lors de son appel à exécution, le nom seul est utilisé, 
         ce sera le code viral qui s’exécutera en premier puis il donnera ensuite la main au programme 
-        original pour ne pas risquer d’alerter l’utilisateur. %vérifié
+        original pour ne pas risquer d’alerter l’utilisateur.\cite{virus_informatique_article} %vérifié
 
         Pour durcir son éventuelle détection, certains virus placent leur code dans un autre répertoire, 
         prioritaire au sein de la variable système PATH. %vérifié
@@ -383,7 +373,7 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         \subsubsection{Par virus délocalisé}
         Le virus exploite le principe de fonctionnement de la table d'allocation des fichiers pour faire pointer 
         tous les fichiers exécutables contaminés vers le code viral, une fois exécuté, celui-ci rend 
-        la main au programme initial. %vérifié
+        la main au programme initial.\cite{virus_informatique_article} %vérifié
 
         Ces virus sont peu nombreux, mais peuvent s’avérer dangereux pour l’intégrité des supports qu’ils infectent. 
         En effet, les utilitaires testant l’intégrité d’un disque découvriront des anomalies (fichiers croisés) 
@@ -394,8 +384,8 @@ Une autre façon de classer les virus est par la façon dont ils essaient de se 
         qu’il s'exécute à chaque fois que le programme est lancé, puis lui rend la main. %vérifié
 
         La force de cette méthode est que le programme infecté n’est pas modifié, par conséquent la taille 
-        est augmenter de la taille du virus, ce qui rend un repérage fondé sur la variation de 
-        la taille des programmes possible. %vérifié
+        est augmentée de la taille du virus, ce qui rend un repérage fondé sur la variation de 
+        la taille des programmes possible. \cite{virus_informatique_article}%vérifié
 
 \section{Structure du format PE} \label{pe_header}
 Le format de fichier \emph{Portable Executable} \cite{pe1} est un format utilisé par Windows (x86 et x64), 
@@ -415,99 +405,32 @@ exécutable. Le format PE se compose d'en-têtes et de sections, comme le montre
 \end{figure}
 
     \subsubsection{En-tête MZ-DOS}
-% pas sur de la phrase.
     Tout fichier PE doit commencer par l'en-tête \emph{MZ-DOS}. Cet en-tête permet au système d'exploitation, au 
-    moment de l'exécution d'un fichier, de reconnaître si c'est un exécutable valide ou non. \cite{pe2} %vérifié
+    moment de l'exécution d'un fichier de reconnaître si c'est un exécutable valide ou non. \cite{pe2} %vérifié
 
     \subsubsection{En-tête PE}
     Cet en-tête contient des champs d'information comme l'offset et la taille des zones de code et de données, 
-    le système d'exploitation dont le fichier est destiné, la taille de la pile initial et 
-    d'autre informations vitale. \cite{pe3} %vérifié
+    le système d'exploitation dont le fichier est destiné, la taille de la pile initiale et 
+    d'autres informations vitales. \cite{pe3} %vérifié
 
     Les premiers bytes sont pris par \emph{MS-DOS stub} qui a le rôle d'afficher un message d'erreur en cas ou 
     l'exécutable est lancé dans un environnement qui ne supporte pas \emph{Win32}, les bytes suivants constituent 
-    une structure de données appeler \emph{\textsc{image\_nt\_headers}} dont les champs sont : %vérifié
+    une structure de données appelée \emph{\textsc{image\_nt\_headers}} dont les champs sont : %vérifié
     \begin{description}
         \item[image\_file\_header :] C'est une structure contenant les informations nécessaires
             sur le fichier comme le nombre de sections, le processeur à qui le fichier est destiné \ldots etc. %vérifié
-        \item[image\_optional\_header :] C'est une structure contenant les des informations cruciales comme l'adresse
-            du point d'entrer. %vérifié
+        \item[image\_optional\_header :] C'est une structure contenant des informations cruciales comme l'adresse
+            du point d'entré. %vérifié
     \end{description}
 
     \subsubsection{Les sections}
-    Tous code, données et ressources sont stockés dans les sections. Une section se compose de deux 
+    Tous codes, données et ressources sont stockés dans les sections. Une section se compose de deux 
     parties : une partie en-tête et une autre pour les données. Chaque en-tête est d'une longueur de 40 
     bytes ; il contient le nom de la section, la taille des données, l'offset de la section dans 
     le ficher PE, et l'adresse de début de la plage d'adresse du processus courant où la section doit être 
     chargée. \cite{pe4}
 
-% \section{Techniques de contournement des Anti-Virus}
-%     \subsection{Methodes de bases}
-%         \subsubsection{Methode cryptage/decryptage} Cette methode est faite en cryptant le corp du virus au préalable, puis le décrypter avec une boucle a son execution, elle permet d'éviter l'analyse statique.
-
-%         \subsubsection{Injection de code} Cette methode consiste ajouter un code externe au code d'un processus legale, ce qui fait qu'a l'execution, le code malveillant sera furtive et aura les memes prévileges que le code original.
-
-%         \subsubsection{Hallowing} Cette méthode consiste a suspendre un processus en éxécution puis de remplacer son code en memoire central par le code malveillant.
-
-%     \subsection{Méthodes alternatives}
-%         \subsubsection{L'offre a refuser} La principale limite avec les scanneurs des anti-virus est la quantité de temps qu'ils peuvent consacrer à chaque fichier . Lors d'une analyse régulière du système , l'anti virus devra analyser des milliers de fichiers alors il ne peut tout simplement pas passer trop de temps ou de puissance sur un fichier particulier ( ceçi pourrait également conduire à une forme de déni de service sur le l'AV ). On a comme exemple :
-%         \begin{itemize}
-%             \item Allocation d'une grande taille d'espace mémoire.
-%             \item Grand boucle a incrementation.
-%         \end{itemize}
-
-%         \subsubsection{Je ne pourrais pas faire cella} Cette technique ce base sur l'auto consience ce qui veux dire, est ce que le code est lancer dans l'environement de l'anti virus ou non.
-%             Cet environement ne donne pas accées a internet au virus qui est entrain d'etre scanner, alors si ce dernier essaye de telecharger ou d'accéder a une page web, l'environmenet générera une réponse que ce soit un fichier ou une page web,
-%             donc si le virus essaye d'accéder a une page web inexistante cella sera possible, ce qui n'est pas le cas dans un environement normal.
-
-%         \subsubsection{Connaitre l'ennemie} Si le nom d'utilisateur d'une machine est connu, il est possible de demander une action depedante de ce nom là, comme par exemple ecrire et lire dans les fichiers du compte utilisateur, donc si apres création d'un fichier et lecture de ce dernier ce conclu par un succeer cela veux dire que le virus n'est pas dans l'environement de l'AV.
-
-%         \subsubsection{Verifier l'enivronement}
-%         \begin{description}
-%             \item[Vérifier le nom de l'éxécutable :] Puisque le code est émulé, il ne démarre pas dans un processus qui a le nom du fichier binaire. Il suffit juste de vérifier si le premier argument contient le nom du fichier.
-
-%             \item[Vérifier la commande sleep :] Nous savons que les anti virus passe les intructions sleep, donc il suffit de verifier si la commande sleep a était bien exécuter ou non.
-%         \end{description}
-
-
-% \section{Techniques de contournement des Anti-Virus}
-%     \subsection{Methodes de bases}
-%     \begin{description}
-%         \item[Methode cryptage/decryptage :] Cette methode est faite en cryptant le corp du virus au préalable, puis le décrypter avec une boucle a son execution, elle permet d'éviter l'analyse statique.
-
-%         \item[Injection de code :] Cette methode consiste ajouter un code externe au code d'un processus legale, ce qui fait qu'a l'execution, le code malveillant sera furtive et aura les memes prévileges que le code original.
-
-%         \item[Hallowing :] Cette méthode consiste a suspendre un processus en éxécution puis de remplacer son code en memoire central par le code malveillant.
-%     \end{description}
-
-%     \subsection{Méthodes alternatives}
-%     \begin{description}
-%         \item[L'offre a refuser :] La principale limite avec les scanneurs des anti-virus est la quantité de temps qu'ils peuvent consacrer à chaque fichier . Lors d'une analyse régulière du système , l'anti virus devra analyser des milliers de fichiers alors il ne peut tout simplement pas passer trop de temps ou de puissance sur un fichier particulier ( ceçi pourrait également conduire à une forme de déni de service sur le l'AV ). On a comme exemple :
-%         \begin{itemize}
-%             \item Allocation d'une grande taille d'espace mémoire.
-%             \item Grand boucle a incrementation.
-%         \end{itemize}
-
-%         \item[Je ne pourrais pas faire cella :] Cette technique ce base sur l'auto consience ce qui veux dire, est ce que le code est lancer dans l'environement de l'anti virus ou non.
-%             Cet environement ne donne pas accées a internet au virus qui est entrain d'etre scanner, alors si ce dernier essaye de telecharger ou d'accéder a une page web, l'environmenet générera une réponse que ce soit un fichier ou une page web,
-%             donc si le virus essaye d'accéder a une page web inexistante cella sera possible, ce qui n'est pas le cas dans un environement normal.
-
-%         \item[Connaitre l'ennemie :] Si le nom d'utilisateur d'une machine est connu, il est possible de demander une action depedante de ce nom là, comme par exemple ecrire et lire dans les fichiers du compte utilisateur, donc si apres création d'un fichier et lecture de ce dernier ce conclu par un succeer cela veux dire que le virus n'est pas dans l'environement de l'AV.
-
-%         \item[Verifier l'enivronement :]
-%         \begin{description}
-%             \item[Vérifier le nom de l'éxécutable :] Puisque le code est émulé, il ne démarre pas dans un processus qui a le nom du fichier binaire. Il suffit juste de vérifier si le premier argument contient le nom du fichier.
-
-%             \item[Vérifier la commande sleep :] Nous savons que les anti virus passe les intructions sleep, donc il suffit de verifier si la commande sleep a était bien exécuter ou non.
-%         \end{description}
-%     \end{description}
-% \section{Introduction}
-% \section{Classification des virus par cible}
-% \section{Classification des virus par techniques de dissimulations}
-% \section{Les techniques d'infections}
-% \section{Techniques de contournement des Anti-Virus}
-
 \section{Conclusion}
 À la fin de ce chapitre, des notions plus ou moins poussées concernant les virus --- comme les méthodes d'infections 
 et les méthodes de dissimulation --- ont été abordées et étudiées. Ces notions sont indispensables pour cerner le 
-mode de fonctionnement des virus, ainsi que pour la mise en œuvre du projet et du prochain chapitre. %vérifié
+mode de fonctionnement des virus. Ainsi que pour la mise en œuvre du projet et du prochain chapitre. %vérifié

@@ -10,9 +10,7 @@
 \usepackage{enumitem}
 \setlist[itemize]{label=\textbullet, topsep=0cm}
 \setlist[description]{topsep=0cm}
-% \setlist[description]{leftmargin=30pt,labelindent=\parindent}
 \usepackage{mathpazo}
-% \usepackage{fullpage}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
 \usepackage{parskip}
@@ -22,16 +20,11 @@
 
 \pagestyle{fancy}
 \fancyhead{}
-% \fancyhead[RO,LE]{Thesis Title}
-% \fancyhead[L]{\rightmark}
 \fancyhead[C]{\leftmark}
 \fancyfoot{}
 \fancyfoot[C]{\thepage}
-% \fancyfoot[LO,CE]{Chapitre \thechapter}
-% we can use \leftmark and \rightmark to add chapter title and section title to header or footer with \fancyhead or \fancyfoot.
-% \fancyfoot[CO,RE]{Author Name}
 \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0.4pt}
+\usepackage[bottom]{footmisc}
 
 \usepackage[defaultlines=4,all]{nowidow}
 \usepackage{caption}
@@ -45,13 +38,7 @@
 \usepackage{soul}
 \usepackage{shadow}
 \usepackage{float}
-% \title{
-%     {Thesis Title}\\
-%     {\large Institution Name}\\
-%     {\includegraphics[scale=1]{images/USTHB_Logo.png}}
-% }
-% \author{Malaoui Sidahmed \and Salim Bitam}
-% \date{\today}
+\usepackage{diagbox}
 
 \begin{document}
 
@@ -63,53 +50,20 @@
 \listoftables
 
 \chapter*{Introduction Générale}
+\markboth{Introduction Générale}{Introduction Générale}
 \pagenumbering{arabic} %Pour réutiliser la numérotation des pages.
 \addcontentsline{toc}{chapter}{\protect\numberline{}Introduction générale}
 \input{chapters/introduction}
-%Here is how to add figures. ===========================================================================================
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[scale=1]{images/msf_example.jpg}
-%     \caption{Figure example}
-%     \label{Figure example}
-% \end{figure}
-
-%Here is how to add subfigures. ========================================================================================
-% \begin{figure}
-%     \centering
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{images/example01}
-%         \caption{$y=x$}
-%         \label{fig:y equals x}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{images/example02}
-%         \caption{$y=3sinx$}
-%         \label{fig:three sin x}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{images/example03}
-%         \caption{$y=5/x$}
-%         \label{fig:five over x}
-%     \end{subfigure}
-%     \caption{Three simple graphs}
-%     \label{fig:three graphs}
-% \end{figure}
 
 % Document begin =======================================================================================================
+
 \chapter{Introduction à la sécurité informatique et aux Malwares}
 \input{chapters/chapter02}
 
 \chapter{Les virus et les méthodes d'infections}
-% \chapter{Les virus}
 \input{chapters/chapter03}
 
-\chapter[Développement, Injection, Propagation]{Développement du Malware et démonstration de l'injection ainsi que la propagation}
+\chapter{Développement du Malware}
 \input{chapters/chapter04}
 
 \chapter*{Conclusion Générale}
@@ -121,6 +75,5 @@
 
 \bibliographystyle{unsrt} %ieetr
 \bibliography{references}
-% \printbibliography
 
 \end{document}

@@ -1,6 +1,5 @@
 %!TEX root = ../main.tex
 
-\pagenumbering{gobble} %Utilisé la numérotation romaine des pages.
 \begin{center}
     \normalsize{Ministère de l'Enseignement Supérieur et de la Recherche Scientifique}\\
     \normalsize{Université des Sciences et de la Technologie Houari Boumediene}\\
@@ -24,7 +23,7 @@
     \shabox{
     \begin{minipage}{0.9\textwidth}
     \begin{center}
-    \Large{Étude technique et développement de malware}
+    \Large{Étude et développement de malware}
     \end{center}
 \end{minipage}
 }
@@ -56,76 +55,10 @@ Projet N : 217/2016
 \end{center}
 
 \clearpage
-% \begin{titlepage}
-%     \begin{center}
-%         \vspace*{1cm}
-        
-%         \Huge
-%         \textbf{Étude technique et développement de malware}
-        
-%         \vspace{0.5cm}
-%         \Large
-        
-%         \vspace{1.5cm}
-        
-%         \begin{tabular}{cc}
-    
-%             % La commande \hline affiche une ligne horizental (pour séparer les lignes). On utilise cette commande partout ou on souhaite obtenir une 
-%             % ligne horizental dans le tableau.
-%             % On sépare le contenu de chaque cellule par '&', et chaque ligne du tableau doit se terminer par '\\'.
-%             \textbf{Malaoui Sidahmed Bilal} & \textbf{Bitam Salim} \\
-%             \texttt{\normalsize{sidahmed.malaoui@gmail.com}} & \texttt{\normalsize{salim.bitam@outlook.com}} \\
 
-%         \end{tabular}
-%         % \textbf{Malaoui, Sidahmed Bilal  \hfill \vcenter Bitam, Salim\\
-%                 % \large{\texttt{sidahmed.malaoui@gmail.com} \hfill \texttt{salim.bitam@outlook.fr}}
-%         % }
-%         \vfill
-        
-%         Une thère présentée pour le grade de\\
-%         Licence en Informatique
-%         % A thesis presented for the degree of\\
-%         % Doctor of Philosophy
-        
-%         \vspace{0.8cm}
-        
-%         \includegraphics[width=0.4\textwidth]{images/USTHB_Logo.png}
-        
-%         \LARGE
-%         Département Informatique\\
-%         Université des Sciences et de la Technologie Houari Boumediene\\
-%         Algérie\\
-%         \today
-        
-%     \end{center}
-% \end{titlepage}
+\pagenumbering{roman} 
 
-% \maketitle
-
-\pagenumbering{roman} %Utilisé la numérotation romaine des pages.
-% Pour abstract
-% \thispagestyle{plain}
-% \begin{center}
-%     \Large
-%     \textbf{Étude technique et développement de malware}
-    
-%     \vspace{0.4cm}
-%     \large
-%     % Thesis Subtitle
-    
-%     \vspace{0.4cm}
-%     \textbf{Malaoui Sidahmed Bilal \hspace{3cm} Bitam Salim}
-    
-%     \vspace{0.9cm}
-%     \textbf{Abstract}
-% \end{center}
-
-
-
-% changé =============================================================================================================
-
-
-\section*{Résumer} 
+\section*{Résumé} 
 L’information est aujourd’hui devenue la plus grande richesse que toute personne ou entreprise peut posséder, et la sensibilité de ces mêmes informations a fait de la sécurité informatique une priorité majeure des individus et des professionnels.
 
 Mais la naïveté de l’être humain l’a poussé à penser que sécuriser sa machine est amplement suffisant pour être à l’abri des attaques, il oublie cependant que sa machine est très souvent en interaction avec d’autres machines de sécurité moindre.
@@ -142,12 +75,7 @@ In this study, we will try to better understand how the virus works , and their 
 \paragraph{Mots clés :} Malware, Virus, Backdoor, Infection virale, Propagation.
 
 
-
-
-
-
 \chapter*{Dédicaces}
-% tout mon dédicace vérifié.
 Je dédie ce travail à mes parents qui m'ont toujours supporté et qui ont toujours sacrifié pour moi. Tout ce que
 je pourrai faire pour eux n'atteindre même pas le quart de ce qu'ils m'ont donné et de ce qu'ils m'ont fait.
 
@@ -168,48 +96,37 @@ leurs origines. L'injustice reste de l'injustice, peu importe qui est l'oppresse
 \vfill
 Sidahmed
 \vfill
+\newpage
+Je dédie ce travail à mes très cher parents qui m'ont toujours supporté dans mes moment difficile et qui se sont toujours sacrifié pour moi, à mon merveilleux père qui ma offert aide, patience et conseils, et ma merveilleuse mère dont les mots ne peuvent décrire, qui ma apporter un soutien morale et des conseils inestimable.
 
+À ma chère famille, dont mes sœurs  adorées
 
+À mes chers amis, Zaki, Ahmed, Sidahmed.
 
-% fin =============================================================================================================
+J'aimerai aussi et surtout dédié ce modeste travail à mes chers frères et sœurs Palestiniens qui sont opprimés par les
+sionistes, les sionistes qui n'ont pas la moindre particule de noblesse ou de courage. Je dis au peuple Palestinien
+que ça me fait mal au cœur de vous voir souffrir et de ne rien pouvoir faire, et ça me fait encore plus mal que 
+les gouvernements qui prétendent être musulmane vous faite du mal et conspirent contre vous au-lieu de vous aider, tous 
+ça pour gagner la bénédiction de leurs maîtres. 
+Mais bi idni Allah, nous continuerons de nous développer pour pouvoir vous être utile dans un future proche.
 
-
+Je dédie aussi ce travail aux peuples opprimés à travers le monde entier, peu importe leurs religions, peu importe
+leurs origines. L'injustice reste de l'injustice, peu importe qui est l'oppresseur, peu importe qui est l'oppressé.
+\vfill
+Salim
+\vfill
 
 \chapter*{Remerciements}
 Nous voudrons commencer par remercier \textsc{dieu}, le miséricordieux, qui nous a donnée les moyens et la force
 d'aller jusqu'au bout de ce projet.
 
-Nous sommes très reconnaissants à Monsieur Belkheir et Madame d'avoir accepté de juger notre travail.
+Nous sommes très reconnaissants à Monsieur \textsc{Belkhir} et Madame \textsc{Chenait} d'avoir accepté de juger notre travail.
 
-Nous tenons à remercier notre promoteur Monsieur \textsc{Zeroualia} Khaled.
+Nous tenons à remercier notre promoteur Monsieur \textsc{Zeraoulia} Khaled pour son soutient.
 
-Un très grand merci à Monsieur \textsc{Adda} Mohamed pour son soutient et son aide précieux. %Sans monsieur 
-% \textsc{Adda}, nous aurions jamais pu arriver jusque là, alors un très grand merci à ce Monsieur dont 
-% les compétences et la gentillesse dépasse l'imagination.
+Un très grand merci à Monsieur \textsc{Adda} Mohamed pour son soutient et son aide précieux.
 
 Nous voudrons aussi remercier le département de l'informatique d'ELIT, de nous avoir accordé un moment précieux de
 leurs temps inestimable.
 
 Enfin, nous remercions tous ceux qui ont contribué de près ou de loin à la réalisation de ce projet.
-
-% Avant tout, j’adresse mes sincères remerciements à Eric GRESSIER-SOUDAN et
-% Claude VILLARD pour leur soutien tout au long de ces trois années de thèse. Je ne
-% saurais dire combien nos échanges et leurs nombreux conseils m’ont été précieux.
-% Je tiens à exprimer toute ma gratitude à Laurent GEORGE qui m’a accueilli dans son
-% équipe et m’a permis de mener à bien ce travail. Nos discussions, toujours très fructueuses,
-% ont beaucoup compté dans l’orientation de mes recherches et l’aboutissement de ces trois
-% années d’études.
-% Je remercie vivement Guy JUANOLE et Zoubir MAMMERI d’avoir accepté d’être les
-% rapporteurs de ma thèse. Leurs remarques et conseils, tous très constructifs, m’ont beaucoup
-% aidé.
-% Je suis très reconnaissant à Joël GOOSSENS, Pierre LEBEE et Yves SOREL d’avoir participé
-% à mon jury de thèse et les en remercie sincèrement.
-% Je souhaite également remercier mes anciens collègues et amis Céline BARTH, Chrystelle
-% GUEGAN, Parinaz LAHMI, Jean-Marc BAUDON et Sio-Hoï IENG pour leur sympathie
-% et leur bonne humeur.
-% Enfin, je remercie mes collègues de l’École Nationale Supérieure d’Informatique pour l’Industrie
-% et l’Entreprise, et tout particulièrement Catherine DUBOIS et Olivier PONS, qui,
-% en plus d’être toujours disponibles, m’ont constamment prodigué d’excellents conseils.
-% Bien sûr, je ne peux terminer sans remercier mes proches de tout coeur et notamment mes
-% parents qui, au cours de ces trois années de thèse, m’ont toujours soutenu et encouragé,
-% comme d’habitude...
