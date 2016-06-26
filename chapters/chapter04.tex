@@ -6,7 +6,7 @@ une machine qui est supposée être sécurisée. %vérifié
 La démarche que nous allons suivre est la suivante : 
 \begin{itemize}
     \item Nous allons développer un Malware hybride constitué d'un virus et d'un backdoor;
-    \item Le Malware sera introduit manuellement dans une machine vulnérable qui est en communication continue
+    \item Le Malware sera introduit dans une machine vulnérable qui est en communication continue
         avec la machine sécurisée;
     \item Ensuite, le Malware se propagera jusqu'à la machine sécurisée sans déclencher d'alerte;
     \item Finalement, un accès total est obtenu sur la machine sécurisée par le biais du backdoor.
@@ -19,7 +19,7 @@ de la sécurité des machines avec lesquelles elle interagit.%vérifié
 
 \section{Préparation de l'environnement} \label{preparation_environnement}
 Dans cette section, l'environnement et les outils nécessaires pour le bon fonctionnement du projet seront installés
-et préparés correctement. Il y en a au totale trois machines différentes : une machine d'attaque, une machine vulnérable,
+et préparés correctement. Il y en a au total trois machines différentes : une machine d'attaque, une machine vulnérable,
 et finalement une machine sécurisée. %vérifié
 
     \subsubsection{La machine d'attaque} 
@@ -119,7 +119,7 @@ et finalement une machine sécurisée. %vérifié
                 \end{figure}
 
                 Pour éviter que le mot de passe soit découvert en \emph{désassemblant} l'exécutable du backdoor,
-                une version hachée est conservée et utilisée pour valider le mot de passe fournie au moment de la 
+                une version hachée est conservée et utilisée pour valider le mot de passe fourni au moment de la 
                 connexion. %vérifié
 
             \item[Accès à l'invite de commande :] Avec cette fonctionnalité, 
@@ -430,7 +430,7 @@ de cette section.
         \label{obtention_accees_meterpreter}
     \end{figure}
 
-\section{Teste de propagation}
+\section{Test de propagation}
 Cette partie contiendra une simulation de propagation du Malware développé au cours de ce projet et 
 l'infection d'une machine sécurisée.
 
